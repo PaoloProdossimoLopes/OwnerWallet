@@ -66,7 +66,7 @@ final class MyWalletViewController: UIViewController {
     
     //MARK: - Constructor
     
-    init(viewModel: WalltetViewModelProtocol = WalltetViewModel()) {
+    init(viewModel: WalltetViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

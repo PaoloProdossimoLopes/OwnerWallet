@@ -25,9 +25,12 @@ final class MyWalletCoordinator: Coordinator {
     }
     
     override func start() {
-        let asset: AssetModel = asset
-        let viewController = MyWalletViewController()
+        let assets: [AssetModel] =  WalletMock.Asset.lisOfAsset
+        let viewModel = WalltetViewModel(assets: assets)
+        let viewController = MyWalletViewController(viewModel: viewModel)
+        
         viewController.navigateDelegate = self
+        
         let navigation = UINavigationController(rootViewController: viewController)
         self.currentViewController = navigation
     }

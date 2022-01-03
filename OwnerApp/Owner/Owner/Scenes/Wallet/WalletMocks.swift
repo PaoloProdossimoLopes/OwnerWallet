@@ -16,7 +16,6 @@ struct WalletMock {
         static let asset = listOfAssetMock.first!
     }
     
-    
 }
 
 //MARK: - Mock properties
@@ -24,26 +23,26 @@ struct WalletMock {
 fileprivate let listOfAssetMock: [AssetModel] = [
     AssetModel(assetCode: "ITUB3",
                assetName: "Itau unibanco BBA",
-               assetSegment: "BANK",
-               assetPrice: "R$ 200,00",
-               assetQuantity: "10", assetType: .BRStocks),
+               assetSegment: "Bancos",
+               assetPrice: 70,
+               assetQuantity: 250, assetType: .BRStocks),
     
-    AssetModel(assetCode: "IVVB11",
-               assetName: "Itau unibanco BBA",
-               assetSegment: "BANK",
-               assetPrice: "R$ 200,00",
-               assetQuantity: "10", assetType: .FIIs),
+    AssetModel(assetCode: "AMT",
+               assetName: "American Tower",
+               assetSegment: "REIT - Specialty",
+               assetPrice: 34.23,
+               assetQuantity: 1.434, assetType: .REITs),
     
-    AssetModel(assetCode: "ITUB3",
-               assetName: "Itau unibanco BBA",
-               assetSegment: "BANK",
-               assetPrice: "R$ 200,00",
-               assetQuantity: "10", assetType: .BRStocks),
+    AssetModel(assetCode: "HGLG11",
+               assetName: "CSHG Logística",
+               assetSegment: "Logística",
+               assetPrice: 123.1231,
+               assetQuantity: 4, assetType: .FIIs),
     
-    AssetModel(assetCode: "ITUB3",
-               assetName: "Itau unibanco BBA",
-               assetSegment: "BANK",
-               assetPrice: "R$ 200,00",
-               assetQuantity: "10", assetType: .USAStocks)
+    AssetModel(assetCode: "MSFT",
+               assetName: "Microsoft",
+               assetSegment: "Software - Infrastructure",
+               assetPrice: 2302.312,
+               assetQuantity: 0.23, assetType: .USAStocks)
 ]
 

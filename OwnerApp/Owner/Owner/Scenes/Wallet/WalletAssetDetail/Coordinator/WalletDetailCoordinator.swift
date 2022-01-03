@@ -18,7 +18,8 @@ final class WalletDetailCoordinator: Coordinator {
     }
     
     override func start() {
-        let controller = WalletDetailViewController()
+        let viewModel = WallatDetailViewModel(asset: self.asset)
+        let controller = WalletDetailViewController(viewModel: viewModel)
         navigationController.present(controller, animated: true, completion: nil)
     }
     

@@ -28,4 +28,8 @@ final class AssetCodeLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
+    func updateFont(font: UIFont = .systemFont(ofSize: 14, weight: .black)) {
+        self.font = font 
+    }
+    
 }

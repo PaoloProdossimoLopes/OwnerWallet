@@ -11,10 +11,24 @@ final class WalletDetailViewController: UIViewController {
     
     //MARK: - Properties
     
+    private let viewModel: WallatDetailViewModelProtocol
+    
     private lazy var detailView: WallatDetailView = {
-        let view = WallatDetailView()
+        let view = WallatDetailView(viewModel: self.viewModel)
+        view.delegate = self
         return view
     }()
+    
+    //MARK: - Contructos
+    
+    init(viewModel: WallatDetailViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     //MARK: - Lifecycle
@@ -48,5 +62,10 @@ final class WalletDetailViewController: UIViewController {
     func configureStyle() {
         
     }
+    
+}
+
+//MARK: - WallatDetailViewDelegate
+extension WalletDetailViewController: WallatDetailViewDelegate {
     
 }

@@ -13,6 +13,10 @@ protocol WalltetViewModelProtocol {
 
 final class WalltetViewModel: WalltetViewModelProtocol {
     
-    var assets: [AssetModel] = WalletMock.Asset.lisOfAsset
+    var assets: [AssetModel]
+    
+    init(assets: [AssetModel]) {
+        self.assets = assets
+    }
     
 }

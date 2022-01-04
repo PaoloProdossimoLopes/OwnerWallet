@@ -56,6 +56,7 @@ final class WallatDetailView: UIView {
         let label = UILabel()
         label.text = self.viewModel.asset.assetName
         label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.textColor = .black
         return label
     }()
     
@@ -63,6 +64,7 @@ final class WallatDetailView: UIView {
         let label = UILabel()
         label.text = self.viewModel.asset.assetSegment
         label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.textColor = .black
         return label
     }()
     
@@ -105,12 +107,14 @@ final class WallatDetailView: UIView {
         let label = UILabel()
         label.text = "Quantidade"
         label.font = .boldSystemFont(ofSize: 18)
+        label.textColor = .black
         return label
     }()
     
     private lazy var assetQuantityValueLabel: UILabel = {
         let label = UILabel()
         label.text = viewModel.asset.assetQuantityFormatted
+        label.textColor = .black
         return label
     }()
     
@@ -127,6 +131,7 @@ final class WallatDetailView: UIView {
         let label = UILabel()
         label.text = "Cotação"
         label.font = .boldSystemFont(ofSize: 18)
+        label.textColor = .black
         return label
     }()
     
@@ -151,6 +156,20 @@ final class WallatDetailView: UIView {
         stack.axis = .horizontal
         stack.distribution = .fillEqually
         return stack
+    }()
+    
+    private lazy var aproachTableViewTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Registro de aportes"
+        label.textAlignment = .center
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        return label
+    }()
+    
+    private lazy var aproachTableView: WalletDetailTableView = {
+        let table = WalletDetailTableView()
+        return table
     }()
     
     //MARK: - Constructor
@@ -181,6 +200,8 @@ final class WallatDetailView: UIView {
         addSubview(assetNameAndSegmentStackView)
         addSubview(assetAmmountHorizontalStackView)
         addSubview(assetHorizontalStackView)
+        addSubview(aproachTableViewTitle)
+        addSubview(aproachTableView)
     }
     
     private func configureConstarints() {
@@ -231,6 +252,19 @@ final class WallatDetailView: UIView {
             $0.trailing(at: self.trailingAnchor, distance: -20)
         }
         
+        aproachTableViewTitle.ownerLayout.applyConstraints {
+            $0.top(at: self.assetHorizontalStackView.bottomAnchor, distance: 20)
+            $0.leading(at: self.leadingAnchor, distance: 20)
+            $0.trailing(at: self.trailingAnchor, distance: -20)
+        }
+        
+        aproachTableView.ownerLayout.applyConstraints {
+            $0.top(at: self.aproachTableViewTitle.bottomAnchor, distance: 10)
+            $0.leading(at: self.leadingAnchor, distance: 20)
+            $0.trailing(at: self.trailingAnchor, distance: -20)
+            $0.bottom(at: self.safeAreaLayoutGuide.bottomAnchor)
+        }
+        
     }
     
     private func configureStyle() {
@@ -244,7 +278,7 @@ final class WallatDetailView: UIView {
     }
     
     @objc private func pencilButtonHandleTapped() {
-        print("Trash button was tapped")
+        print("Pencil button was tapped")
     }
     
 }

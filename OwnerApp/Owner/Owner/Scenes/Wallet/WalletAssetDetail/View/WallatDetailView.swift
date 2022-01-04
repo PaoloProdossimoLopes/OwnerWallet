@@ -29,6 +29,21 @@ final class WallatDetailView: UIView {
         return view
     }()
     
+    private lazy var removeAssetButton: UIButton = {
+        return .configureAditionalButtons(
+            target: self, imageSystemName: "trash", color: .systemRed,
+            action: #selector(trashButtonHandleTapped), imageSize: 20
+        )
+    }()
+    
+    private lazy var edditAssetButton: UIButton = {
+        return .configureAditionalButtons(
+            target: self, imageSystemName: "pencil", color: .lightGray,
+            action: #selector(pencilButtonHandleTapped), imageSize: 34
+        )
+    }()
+    
+    
     private lazy var assetCodeLabel: AssetCodeLabel = {
         let label = AssetCodeLabel()
         label.text = viewModel.asset.assetCode
@@ -159,6 +174,8 @@ final class WallatDetailView: UIView {
     }
     
     private func configureViewHierarchy() {
+        addSubview(removeAssetButton)
+        addSubview(edditAssetButton)
         addSubview(topViewDetailModalIndicator)
         addSubview(assetCodeLabel)
         addSubview(assetNameAndSegmentStackView)
@@ -180,6 +197,20 @@ final class WallatDetailView: UIView {
             $0.centerX(at: self.centerXAnchor)
             $0.height(40)
             $0.width(3*40)
+        }
+        
+        removeAssetButton.ownerLayout.applyConstraints {
+            $0.centerY(at: self.assetCodeLabel.centerYAnchor)
+            $0.trailing(at: self.trailingAnchor, distance: -20)
+            $0.height(36)
+            $0.width(36)
+        }
+        
+        edditAssetButton.ownerLayout.applyConstraints {
+            $0.centerY(at: self.assetCodeLabel.centerYAnchor)
+            $0.leading(at: self.leadingAnchor, distance: 20)
+            $0.height(36)
+            $0.width(36)
         }
         
         assetNameAndSegmentStackView.ownerLayout.applyConstraints {
@@ -207,6 +238,14 @@ final class WallatDetailView: UIView {
     }
     
     //MARK: - Selectors
+    
+    @objc private func trashButtonHandleTapped() {
+        print("Trash button was tapped")
+    }
+    
+    @objc private func pencilButtonHandleTapped() {
+        print("Trash button was tapped")
+    }
     
 }
 

@@ -45,7 +45,6 @@ final class WallatDetailView: UIView {
         )
     }()
     
-    
     private lazy var assetCodeLabel: AssetCodeLabel = {
         let label = AssetCodeLabel()
         label.text = viewModel.asset.assetCode
@@ -54,6 +53,7 @@ final class WallatDetailView: UIView {
         return label
     }()
     
+    //Name and segment
     private lazy var assetNameAndSegmentStackView: TitleAndSubtitleVStackView = .init(
         title: viewModel.asset.assetName, subtitle: viewModel.asset.assetSegment
     )
@@ -63,59 +63,13 @@ final class WallatDetailView: UIView {
         title: "Patrimônio", subtitle: viewModel.asset.assetAmountValueFormatted
     )
     
-    //Quantity
-    private lazy var assetQuantityTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Quantidade"
-        label.font = .boldSystemFont(ofSize: 18)
-        label.textColor = .black
-        return label
-    }()
-    
-    private lazy var assetQuantityValueLabel: UILabel = {
-        let label = UILabel()
-        label.text = viewModel.asset.assetQuantityFormatted
-        label.textColor = .black
-        return label
-    }()
-    
-    private lazy var assetQuantityVerticalStackView: UIStackView = {
-        let subviews =  [assetQuantityTitleLabel, assetQuantityValueLabel]
-        let stack = UIStackView(arrangedSubviews: subviews)
-        stack.axis = .vertical
-        stack.alignment = .center
-        return stack
-    }()
-    
-    //CurentPrice
-    private lazy var assetCurentPriceTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Cotação"
-        label.font = .boldSystemFont(ofSize: 18)
-        label.textColor = .black
-        return label
-    }()
-    
-    private lazy var assetCurentPriceValueLabel: UILabel = {
-        let label = UILabel()
-        label.text = viewModel.asset.assetPriceFormatted
-        return label
-    }()
-    
-    private lazy var assetCurentPriceVerticalStackView: UIStackView = {
-        let subviews = [assetCurentPriceTitleLabel, assetCurentPriceValueLabel]
-        let stack = UIStackView(arrangedSubviews: subviews)
-        stack.axis = .vertical
-        stack.alignment = .center
-        return stack
-    }()
-    
-    //Main Horizontal stack
-    private lazy var assetHorizontalStackView: UIStackView = {
-        let subviews = [assetQuantityVerticalStackView, assetCurentPriceVerticalStackView]
-        let stack = UIStackView(arrangedSubviews: subviews)
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
+    //Quantity And CurentPrice
+    private lazy var assetHorizontalStackView: AssetHorizontalWithVerticalStackView = {
+        let list: [AssetVStackViewModel] = [
+            .init(title: "Quantidade", subtitle: viewModel.asset.assetQuantityFormatted),
+            .init(title: "Cotação", subtitle: viewModel.asset.assetPriceFormatted)
+        ]
+        let stack = AssetHorizontalWithVerticalStackView(listOfAssetVStackViewModel: list)
         return stack
     }()
     

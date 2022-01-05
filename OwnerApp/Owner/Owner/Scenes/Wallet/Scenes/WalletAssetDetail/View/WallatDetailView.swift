@@ -116,6 +116,7 @@ final class WallatDetailView: UIView {
         return table
     }()
     
+    
     //MARK: - Constructor
     
     init(viewModel: WallatDetailViewModelProtocol) {
@@ -147,6 +148,7 @@ final class WallatDetailView: UIView {
         addSubview(aproachTableViewTitle)
         addSubview(aproachTableViewSubtitleSheetStackView)
         addSubview(aproachTableView)
+
     }
     
     private func configureConstarints() {
@@ -180,7 +182,7 @@ final class WallatDetailView: UIView {
         }
         
         assetNameAndSegmentStackView.ownerLayout.applyConstraints {
-            $0.top(at: self.assetCodeLabel.bottomAnchor, distance: 20)
+            $0.top(at: self.assetCodeLabel.bottomAnchor, distance: 30)
             $0.leading(at: self.leadingAnchor, distance: 20)
             $0.trailing(at: self.trailingAnchor, distance: -20)
         }
@@ -216,6 +218,8 @@ final class WallatDetailView: UIView {
             $0.greaterOrEqual(fixAt: self.safeAreaLayoutGuide.bottomAnchor)
         }
         
+        
+        
     }
     
     private func configureStyle() {
@@ -233,7 +237,6 @@ final class WallatDetailView: UIView {
     }
     
 }
-
 
 //MARK: - WDVConst
 

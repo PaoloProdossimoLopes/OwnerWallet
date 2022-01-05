@@ -18,13 +18,26 @@ public extension Double {
     
     func getQuantityFormatation() -> String {
         let nsNumber = self as NSNumber
+        let nf = getQunatityFormatter()
+        let value = nf.string(from: nsNumber) ?? "-,--"
+        return value
+    }
+    
+    func getQuantityFormatationWithUnit() -> String {
+        let nsNumber = self as NSNumber
+        let nf = getQunatityFormatter()
+        nf.positiveSuffix = " un"
+        let value = nf.string(from: nsNumber) ?? "-,--"
+        return value
+    }
+    
+    private func getQunatityFormatter() -> NumberFormatter {
         let nf = NumberFormatter()
         nf.numberStyle = .decimal
         nf.decimalSeparator = ","
         nf.minimumFractionDigits = 3
         nf.minimumIntegerDigits = 1
-        let value = nf.string(from: nsNumber) ?? "-,--"
-        return value
+        return nf
     }
     
 }

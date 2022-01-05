@@ -64,6 +64,84 @@ final class MyWalletViewController: UIViewController {
         return table
     }()
     
+    //Diversity
+    private lazy var bulletColorPoint: UIView = {
+        let view = UIView()
+        view.backgroundColor = .ownerBlue
+        view.layer.cornerRadius = 10/2
+        return view
+    }()
+    private lazy var assetTypeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Ações"
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 12)
+        return label
+    }()
+    
+    private lazy var percentageValueLabel: UILabel = {
+        let label = UILabel()
+        label.text = "0%"
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 12)
+        return label
+    }()
+    
+    private lazy var progressBar: UIProgressView = {
+        let pg = UIProgressView(progressViewStyle: .bar)
+        pg.backgroundColor = .lightGray.withAlphaComponent(0.5)
+        pg.setProgress(0.4, animated: true)
+        pg.layer.cornerRadius = 10/2
+        pg.clipsToBounds = true
+        pg.progressTintColor = .ownerBlue
+        return pg
+    }()
+    
+    private lazy var amountInvestedCategory: UILabel = {
+        let label = UILabel()
+        label.text = "R$0"
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 12)
+        label.textColor = .black
+        return label
+    }()
+    
+    private lazy var qunatityOfAssets: UILabel = {
+        let label = UILabel()
+        label.text = "0 Ativos"
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 12)
+        label.textColor = .black
+        return label
+    }()
+    
+    private lazy var assetDiversityHStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            percentageValueLabel, progressBar,
+            amountInvestedCategory, qunatityOfAssets
+        ])
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
+        stack.spacing = 20
+        stack.alignment = .center
+        return stack
+    }()
+    
+    private lazy var assetwithBulletStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            bulletColorPoint, assetTypeLabel, assetDiversityHStackView
+        ])
+        stack.axis = .horizontal
+        stack.spacing = 10
+        return stack
+    }()
+    
+    private lazy var assetDiversityVStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [assetwithBulletStackView])
+        stack.axis = .vertical
+        return stack
+    }()
+    
     //MARK: - Constructor
     
     init(viewModel: WalltetViewModelProtocol) {
@@ -99,25 +177,42 @@ final class MyWalletViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: userImageView)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: includeAssetButton)
         
-        [yourBalanceComponent, assetsTableView]
+        [yourBalanceComponent, assetsTableView, assetDiversityVStackView]
             .forEach { [weak self] customView in self?.view.addSubview(customView) }
+        
     
     }
     
     func configureConstraints() {
-    
-            yourBalanceComponent.ownerLayout.applyConstraints {
-                $0.top(at: self.view.safeAreaLayoutGuide.topAnchor)
-                $0.leading(at: self.view.leadingAnchor)
-                $0.trailing(at: self.view.trailingAnchor)
-            }
-            
-            assetsTableView.ownerLayout.applyConstraints {
-                $0.top(at: self.yourBalanceComponent.bottomAnchor)
-                $0.leading(at: self.view.leadingAnchor)
-                $0.trailing(at: self.view.trailingAnchor)
-                $0.bottom(at: self.view.safeAreaLayoutGuide.bottomAnchor)
-            }
+        
+        yourBalanceComponent.ownerLayout.applyConstraints {
+            $0.top(at: self.view.safeAreaLayoutGuide.topAnchor)
+            $0.leading(at: self.view.leadingAnchor)
+            $0.trailing(at: self.view.trailingAnchor)
+        }
+        
+        assetsTableView.ownerLayout.applyConstraints {
+            $0.top(at: self.yourBalanceComponent.bottomAnchor)
+            $0.leading(at: self.view.leadingAnchor)
+            $0.trailing(at: self.view.trailingAnchor)
+        }
+        
+        bulletColorPoint.ownerLayout.applyConstraints {
+            $0.height(10)
+            $0.width(10)
+        }
+        
+        progressBar.ownerLayout.applyConstraints {
+            $0.width(80)
+            $0.height(10)
+        }
+        
+        assetDiversityVStackView.ownerLayout.applyConstraints {
+            $0.top(at: self.assetsTableView.bottomAnchor, distance: 30)
+            $0.leading(at: self.assetsTableView.leadingAnchor, distance: 20)
+            $0.trailing(at: self.assetsTableView.trailingAnchor, distance: -20)
+            $0.greaterOrEqual(fixAt: self.view.safeAreaLayoutGuide.bottomAnchor)
+        }
         
     }
     

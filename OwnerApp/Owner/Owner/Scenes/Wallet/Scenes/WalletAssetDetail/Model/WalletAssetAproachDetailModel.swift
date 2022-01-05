@@ -19,7 +19,7 @@ struct WalletAssetAproachDetailModel {
     //MARK: - Computed properties
     
     var quantityOfAssetsFormatted: String {
-        return quantityOfAssets.getQuantityFormatation()
+        return quantityOfAssets.getQuantityFormatationWithUnit()
     }
     
     var valueOfAproachFormatted: String {

@@ -195,6 +195,8 @@ final class MyWalletViewController: UIViewController {
             $0.top(at: self.yourBalanceComponent.bottomAnchor)
             $0.leading(at: self.view.leadingAnchor)
             $0.trailing(at: self.view.trailingAnchor)
+//            $0.bottom(at: self.assetDiversityVStackView.topAnchor)
+//            $0.greaterOrEqual(fixAt: self.view.safeAreaLayoutGuide.bottomAnchor)
         }
         
         bulletColorPoint.ownerLayout.applyConstraints {
@@ -211,7 +213,7 @@ final class MyWalletViewController: UIViewController {
             $0.top(at: self.assetsTableView.bottomAnchor, distance: 30)
             $0.leading(at: self.assetsTableView.leadingAnchor, distance: 20)
             $0.trailing(at: self.assetsTableView.trailingAnchor, distance: -20)
-            $0.greaterOrEqual(fixAt: self.view.safeAreaLayoutGuide.bottomAnchor)
+            $0.greaterOrEqual(fixAt: self.view.safeAreaLayoutGuide.bottomAnchor, distance: -10)
         }
         
     }

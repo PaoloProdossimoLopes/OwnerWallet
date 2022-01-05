@@ -110,6 +110,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B14CA1DC278537A70010F5DA /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B14F7B0E2780F90800F24F9C /* WalletAssetDetail */,
+				B14F7B142780F99E00F24F9C /* MyWallet */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		B14F7AFF2780CCFB00F24F9C /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,10 +264,9 @@
 			isa = PBXGroup;
 			children = (
 				B14F7B092780DB7300F24F9C /* WalletMocks.swift */,
+				B14CA1DC278537A70010F5DA /* Scenes */,
 				B14F7AFF2780CCFB00F24F9C /* Components */,
 				B1CFA4922771630D00A02681 /* Coordinator */,
-				B14F7B0E2780F90800F24F9C /* WalletAssetDetail */,
-				B14F7B142780F99E00F24F9C /* MyWallet */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";

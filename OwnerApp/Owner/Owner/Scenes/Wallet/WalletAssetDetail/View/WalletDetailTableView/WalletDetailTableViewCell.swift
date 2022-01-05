@@ -86,7 +86,7 @@ final class WalletDetailTableViewCell: UITableViewCell {
     }
     
     private func inputDatas() {
-        self.dateOfAproachLabel.text = aproach?.dateOfAproach
+        self.dateOfAproachLabel.text = aproach?.dateFormatted
         self.quantityOfAssetsLabel.text = aproach?.quantityOfAssetsFormatted
         self.valueOfAproachLabel.text = aproach?.valueOfAproachFormatted
     }

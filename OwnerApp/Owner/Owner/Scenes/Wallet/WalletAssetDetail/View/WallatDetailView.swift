@@ -31,15 +31,17 @@ final class WallatDetailView: UIView {
     
     private lazy var removeAssetButton: UIButton = {
         return .configureAditionalButtons(
-            target: self, imageSystemName: "trash", color: .systemRed,
-            action: #selector(trashButtonHandleTapped), imageSize: 20
+            target: self, imageSystemName: "trash",
+            color: .systemRed.withAlphaComponent(0.4),
+            action: #selector(trashButtonHandleTapped), imageSize: 10
         )
     }()
     
     private lazy var edditAssetButton: UIButton = {
         return .configureAditionalButtons(
-            target: self, imageSystemName: "pencil", color: .lightGray,
-            action: #selector(pencilButtonHandleTapped), imageSize: 34
+            target: self, imageSystemName: "pencil",
+            color: .lightGray.withAlphaComponent(0.8),
+            action: #selector(pencilButtonHandleTapped), imageSize: 28
         )
     }()
     
@@ -149,7 +151,7 @@ final class WallatDetailView: UIView {
         return stack
     }()
     
-    //Main Horixontal stack
+    //Main Horizontal stack
     private lazy var assetHorizontalStackView: UIStackView = {
         let subviews = [assetQuantityVerticalStackView, assetCurentPriceVerticalStackView]
         let stack = UIStackView(arrangedSubviews: subviews)
@@ -277,7 +279,7 @@ final class WallatDetailView: UIView {
         }
         
         assetHorizontalStackView.ownerLayout.applyConstraints {
-            $0.top(at: self.assetAmmountHorizontalStackView.bottomAnchor, distance: 30)
+            $0.top(at: self.assetAmmountHorizontalStackView.bottomAnchor, distance: 10)
             $0.leading(at: self.leadingAnchor, distance: 20)
             $0.trailing(at: self.trailingAnchor, distance: -20)
         }

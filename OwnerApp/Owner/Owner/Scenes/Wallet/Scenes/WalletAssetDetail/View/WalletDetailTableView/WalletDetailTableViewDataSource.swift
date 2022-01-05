@@ -38,7 +38,8 @@ extension WalletDetailTableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
-        let aproachModel = viewModel.listOfAproach[index]
+        let aproachListSorted = viewModel.getListOfAproachSorted()
+        let aproachModel = aproachListSorted[index]
         
         guard let cell: WalletDetailTableViewCell = tableView.dequeueReusableCell(
             withIdentifier: WalletDetailTableViewCell.registerName, for: indexPath

@@ -83,6 +83,7 @@ final class WalletDetailTableViewCell: UITableViewCell {
             $0.top(at: self.mainStackView.bottomAnchor, distance: 10)
             $0.bottom(at: self.bottomAnchor, distance: -5)
         }
+        
     }
     
     private func inputDatas() {

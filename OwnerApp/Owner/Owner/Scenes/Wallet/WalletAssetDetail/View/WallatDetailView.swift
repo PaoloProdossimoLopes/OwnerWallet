@@ -171,22 +171,22 @@ final class WallatDetailView: UIView {
     
     private lazy var aproachTableViewSubtitleSheetStackView: UIStackView = {
         let date = UILabel()
-        date.text = "  Data"
+        date.text = "Data"
         date.font = .boldSystemFont(ofSize: 12)
         date.textColor = .black
         date.textAlignment = .left
-        
-        let value = UILabel()
-        value.text = "Valor  "
-        value.font = .boldSystemFont(ofSize: 12)
-        value.textColor = .black
-        value.textAlignment = .right
         
         let quantity = UILabel()
         quantity.text = "QTD"
         quantity.font = .boldSystemFont(ofSize: 12)
         quantity.textColor = .black
         quantity.textAlignment = .center
+        
+        let value = UILabel()
+        value.text = "Valor"
+        value.font = .boldSystemFont(ofSize: 12)
+        value.textColor = .black
+        value.textAlignment = .right
         
         let stack = UIStackView(arrangedSubviews: [date, quantity, value])
         stack.axis = .horizontal
@@ -300,7 +300,7 @@ final class WallatDetailView: UIView {
             $0.top(at: self.aproachTableViewSubtitleSheetStackView.bottomAnchor, distance: 5)
             $0.leading(at: self.aproachTableViewSubtitleSheetStackView.leadingAnchor)
             $0.trailing(at: self.aproachTableViewSubtitleSheetStackView.trailingAnchor)
-            $0.bottom(at: self.safeAreaLayoutGuide.bottomAnchor)
+            $0.greaterOrEqual(fixAt: self.safeAreaLayoutGuide.bottomAnchor)
         }
         
     }

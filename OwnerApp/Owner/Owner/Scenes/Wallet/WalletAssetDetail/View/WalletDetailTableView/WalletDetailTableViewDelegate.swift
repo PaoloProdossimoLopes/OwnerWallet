@@ -15,7 +15,11 @@ protocol WalletDetailTableViewDelegateProtocol: UITableViewDelegate {
 
 final class WalletDetailTableViewDelegate: WDTVDProtocol {
     
+    //MARK: - Properties
+    
     private let vieModel: WalletDetailTableViewModelProtocol
+    
+    //MARK: - COnstructor
     
     init(tableViewModel: WalletDetailTableViewModelProtocol) {
         self.vieModel = tableViewModel

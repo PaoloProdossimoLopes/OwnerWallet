@@ -16,7 +16,11 @@ protocol WalletDetailTableViewDataSourceProtocol: UITableViewDataSource {
 
 final class WalletDetailTableViewDataSource: WDTVDSProtocol {
     
+    //MARK: - Properties
+    
     private let viewModel: WalletDetailTableViewModelProtocol
+    
+    //MARK: - Constructor
     
     init(tableViewModel: WalletDetailTableViewModelProtocol) {
         self.viewModel = tableViewModel

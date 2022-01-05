@@ -9,9 +9,13 @@ import UIKit
 
 final class WalletDetailTableView: UITableView {
     
+    //MARK: - Properties
+    
     private let viewModel: WalletDetailTableViewModelProtocol
     private let WDTVDelegate: WalletDetailTableViewDelegateProtocol
     private let WDTVDDataSource: WalletDetailTableViewDataSourceProtocol
+    
+    //MARK: - Constructors
     
     init(viewModel: WalletDetailTableViewModelProtocol) {
         self.viewModel = viewModel
@@ -20,6 +24,12 @@ final class WalletDetailTableView: UITableView {
         super.init(frame: .zero, style: .plain)
         commonInit()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Helpers
     
     private func commonInit() {
         confugureCell()
@@ -47,10 +57,6 @@ final class WalletDetailTableView: UITableView {
         separatorColor = .clear
         backgroundColor = .clear
         tableFooterView = UIView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
 }

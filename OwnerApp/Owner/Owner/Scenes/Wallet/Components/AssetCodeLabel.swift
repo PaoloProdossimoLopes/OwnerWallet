@@ -9,6 +9,8 @@ import UIKit
 
 final class AssetCodeLabel: UILabel {
     
+    //MARK: - Constructor
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureLabel()
@@ -17,6 +19,8 @@ final class AssetCodeLabel: UILabel {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Helpers
     
     private func configureLabel() {
         textColor = .white
@@ -27,6 +31,8 @@ final class AssetCodeLabel: UILabel {
         clipsToBounds = true
         translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    //MARK: - Setters
     
     func updateFont(font: UIFont = .systemFont(ofSize: 14, weight: .black)) {
         self.font = font 

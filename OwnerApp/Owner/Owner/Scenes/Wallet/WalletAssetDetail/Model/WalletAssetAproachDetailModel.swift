@@ -10,9 +10,13 @@ import OwnerLIB
 
 struct WalletAssetAproachDetailModel {
     
+    //MARK: - Initializer properties
+    
     let dateOfAproach: String
     let valueOfAssetAproach: Double
     let quantityOfAssets: Double
+    
+    //MARK: - Computed properties
     
     var quantityOfAssetsFormatted: String {
         return quantityOfAssets.getQuantityFormatation()

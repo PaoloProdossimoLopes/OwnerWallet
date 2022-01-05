@@ -16,17 +16,6 @@ final class WalletDetailTableViewCell: UITableViewCell {
     
     //MARK: - UIComponents
     
-    //MARK: - Constructor
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        commonInit()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private lazy var dateOfAproachLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -58,6 +47,17 @@ final class WalletDetailTableViewCell: UITableViewCell {
     }()
     
     private lazy var divider = self.dividerView()
+    
+    //MARK: - Constructor
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //MARK: - Helpers
     
@@ -100,4 +100,5 @@ final class WalletDetailTableViewCell: UITableViewCell {
     func setAproach(_ aproach: WalletAssetAproachDetailModel) {
         self.aproach = aproach
     }
+    
 }

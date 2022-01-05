@@ -14,10 +14,14 @@ protocol OwnerWalletCoordinatorNavigate: AnyObject {
 
 final class OwnerWalletCoordinator: Coordinator {
     
+    //MARK: - Properties
     public var currentController: UIViewController
     
+    //MARK: - Coordinators
     private var myWalletCoordinator: MyWalletCoordinator
     private var walletDetailCoordinator: WalletDetailCoordinator
+    
+    //MARK: - Constructor
     
     override init(with navigation: UINavigationController) {
         
@@ -35,6 +39,8 @@ final class OwnerWalletCoordinator: Coordinator {
         configureTabBar()
     }
     
+    //MARK: - Helpers
+    
     private func configureTabBar() {
         let homeImage = UIImage(systemName: "wallet.pass.fill")
         currentController.tabBarItem = UITabBarItem(
@@ -48,6 +54,7 @@ final class OwnerWalletCoordinator: Coordinator {
     }
     
 }
+//MARK: - OwnerWalletCoordinatorNavigate
 
 extension OwnerWalletCoordinator: OwnerWalletCoordinatorNavigate {
     func navigateToDetail(_ asset: AssetModel) {

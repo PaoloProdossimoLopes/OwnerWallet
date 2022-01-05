@@ -141,7 +141,7 @@ extension AssetTableViewCell {
             
             static let assetCodeLeadingDistance: CGFloat = 10
             static let assetCodeHeightSize: CGFloat = 30
-            static let assetCodeWidthSize: CGFloat = 60
+            static let assetCodeWidthSize: CGFloat = 70
             
             static let nameAndSegmanetLeadingDistance: CGFloat = 20
             static let nameAndSegmanetTrailingDistance: CGFloat = -20

@@ -121,6 +121,7 @@
 		B14F7B042780D56700F24F9C /* AssetTableView */ = {
 			isa = PBXGroup;
 			children = (
+				B1CFA49B2778AB8E00A02681 /* AssetTableViewCell.swift */,
 				B14F7B022780D38D00F24F9C /* AssetTableView.swift */,
 				B14F7B052780D58A00F24F9C /* AssetTableViewDataSorce.swift */,
 				B14F7B072780D64400F24F9C /* AssetTableViewDelegate.swift */,
@@ -276,7 +277,6 @@
 				B14F7B042780D56700F24F9C /* AssetTableView */,
 				B1CFA4962771637C00A02681 /* MyWalletViewController.swift */,
 				B1CFA4992778A5D900A02681 /* OwnerYourBalanceInformation.swift */,
-				B1CFA49B2778AB8E00A02681 /* AssetTableViewCell.swift */,
 				B19E0D2227791421006EC3C8 /* AssetDetailModalView.swift */,
 			);
 			path = View;

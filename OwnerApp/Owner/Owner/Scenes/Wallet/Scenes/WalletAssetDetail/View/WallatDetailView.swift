@@ -59,30 +59,9 @@ final class WallatDetailView: UIView {
     )
     
     //Amount
-    private lazy var assetAmountTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Patrimônio"
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
-        label.textColor = .black
-        label.textAlignment = .left
-        return label
-    }()
-    
-    private lazy var assetAmmountValueLabel: UILabel = {
-        let label = UILabel()
-        label.text = viewModel.asset.assetAmountValueFormatted
-        label.font = .systemFont(ofSize: 22, weight: .bold)
-        label.textColor = .ownerBlue
-        label.textAlignment = .right
-        return label
-    }()
-    
-    private lazy var assetAmmountHorizontalStackView: UIStackView = {
-        let subviews = [assetAmountTitleLabel, UIView(), assetAmmountValueLabel]
-        let stack = UIStackView(arrangedSubviews: subviews)
-        stack.axis = .horizontal
-        return stack
-    }()
+    private lazy var assetAmmountHorizontalStackView = AssetAmountInformationHorizontalStackView(
+        title: "Patrimônio", subtitle: viewModel.asset.assetAmountValueFormatted
+    )
     
     //Quantity
     private lazy var assetQuantityTitleLabel: UILabel = {

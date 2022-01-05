@@ -7,7 +7,14 @@
 
 import UIKit
 
-final class AssetTableViewDataSorce: NSObject {
+typealias ATBVDSProtocol = (NSObject & AssetTableViewDataSorceProtocol)
+
+protocol AssetTableViewDataSorceProtocol: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+}
+
+final class AssetTableViewDataSorce: ATBVDSProtocol {
     
     //MARK: - Properties
     
@@ -23,7 +30,7 @@ final class AssetTableViewDataSorce: NSObject {
 
 //MARK: - UITableViewDataSource
 
-extension AssetTableViewDataSorce: UITableViewDataSource {
+extension AssetTableViewDataSorce {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return assets.count

@@ -18,10 +18,10 @@ final class AssetTableView: UITableView {
     let controller: MyWalletViewController
     let listofAssets: [AssetModel]
     
-    private lazy var assetDataSource: AssetTableViewDataSorce = .init(
+    private lazy var assetDataSource: AssetTableViewDataSorceProtocol = AssetTableViewDataSorce(
         assets: listofAssets
     )
-    private lazy var assetDelegate: AssetTableViewDelegate = .init(
+    private lazy var assetDelegate: AssetTableViewDelegateProtocol = AssetTableViewDelegate(
         controller, assets: listofAssets
     )
     

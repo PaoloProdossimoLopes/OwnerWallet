@@ -5,10 +5,16 @@
 //  Created by Paolo Prodossimo Lopes on 01/01/22.
 //
 
-import Foundation
 import UIKit
 
-final class AssetTableViewDelegate: NSObject {
+typealias ATVDProtocol = (NSObject & AssetTableViewDelegateProtocol)
+
+protocol AssetTableViewDelegateProtocol: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    var navigateDelegate: AssetTableViewNavigateDelegate? { get set }
+}
+
+final class AssetTableViewDelegate: ATVDProtocol {
     
     //MARK: - Properties
     
@@ -27,7 +33,7 @@ final class AssetTableViewDelegate: NSObject {
 
 //MARK: - UITableViewDelegate
 
-extension AssetTableViewDelegate: UITableViewDelegate {
+extension AssetTableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)

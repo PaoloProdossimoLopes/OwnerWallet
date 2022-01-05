@@ -54,29 +54,9 @@ final class WallatDetailView: UIView {
         return label
     }()
     
-    private lazy var assetNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = self.viewModel.asset.assetName
-        label.font = .systemFont(ofSize: 22, weight: .semibold)
-        label.textColor = .black
-        return label
-    }()
-    
-    private lazy var assetSegmentLabel: UILabel = {
-        let label = UILabel()
-        label.text = self.viewModel.asset.assetSegment
-        label.font = .systemFont(ofSize: 18, weight: .regular)
-        label.textColor = .black
-        return label
-    }()
-    
-    private lazy var assetNameAndSegmentStackView: UIStackView = {
-        let subviews = [assetNameLabel, assetSegmentLabel]
-        let stack = UIStackView(arrangedSubviews: subviews)
-        stack.axis = .vertical
-        stack.alignment = .center
-        return stack
-    }()
+    private lazy var assetNameAndSegmentStackView: TitleAndSubtitleVStackView = .init(
+        title: viewModel.asset.assetName, subtitle: viewModel.asset.assetSegment
+    )
     
     //Amount
     private lazy var assetAmountTitleLabel: UILabel = {

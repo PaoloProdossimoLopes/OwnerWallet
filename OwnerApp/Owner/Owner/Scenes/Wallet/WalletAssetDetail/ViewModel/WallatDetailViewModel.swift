@@ -9,14 +9,17 @@ import Foundation
 
 protocol WallatDetailViewModelProtocol {
     var asset: AssetModel { get }
+    var listOfAssetsAproacheds: [WalletAssetAproachDetailModel] { get }
 }
 
 final class WallatDetailViewModel: WallatDetailViewModelProtocol {
     
-    var asset: AssetModel
+    private(set) var asset: AssetModel
+    private(set) var listOfAssetsAproacheds: [WalletAssetAproachDetailModel]
     
-    init(asset: AssetModel) {
+    init(asset: AssetModel, listOfAssetsAproacheds: [WalletAssetAproachDetailModel]) {
         self.asset = asset
+        self.listOfAssetsAproacheds = listOfAssetsAproacheds
     }
     
 }

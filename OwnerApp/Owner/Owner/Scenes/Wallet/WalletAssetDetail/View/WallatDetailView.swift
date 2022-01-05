@@ -167,8 +167,37 @@ final class WallatDetailView: UIView {
         return label
     }()
     
+    private lazy var aproachTableViewSubtitleSheetStackView: UIStackView = {
+        let date = UILabel()
+        date.text = "  Data"
+        date.font = .boldSystemFont(ofSize: 12)
+        date.textColor = .black
+        date.textAlignment = .left
+        
+        let value = UILabel()
+        value.text = "Valor  "
+        value.font = .boldSystemFont(ofSize: 12)
+        value.textColor = .black
+        value.textAlignment = .right
+        
+        let quantity = UILabel()
+        quantity.text = "QTD"
+        quantity.font = .boldSystemFont(ofSize: 12)
+        quantity.textColor = .black
+        quantity.textAlignment = .center
+        
+        let stack = UIStackView(arrangedSubviews: [date, quantity, value])
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        return stack
+    }()
+    
     private lazy var aproachTableView: WalletDetailTableView = {
-        let table = WalletDetailTableView()
+        let viewModel = WalletDetailTableViewModel(
+            assetModel: viewModel.asset,
+            listOfAproach: viewModel.listOfAssetsAproacheds
+        )
+        let table = WalletDetailTableView(viewModel: viewModel)
         return table
     }()
     
@@ -201,6 +230,7 @@ final class WallatDetailView: UIView {
         addSubview(assetAmmountHorizontalStackView)
         addSubview(assetHorizontalStackView)
         addSubview(aproachTableViewTitle)
+        addSubview(aproachTableViewSubtitleSheetStackView)
         addSubview(aproachTableView)
     }
     
@@ -253,15 +283,21 @@ final class WallatDetailView: UIView {
         }
         
         aproachTableViewTitle.ownerLayout.applyConstraints {
-            $0.top(at: self.assetHorizontalStackView.bottomAnchor, distance: 20)
+            $0.top(at: self.assetHorizontalStackView.bottomAnchor, distance: 30)
+            $0.leading(at: self.leadingAnchor, distance: 20)
+            $0.trailing(at: self.trailingAnchor, distance: -20)
+        }
+        
+        aproachTableViewSubtitleSheetStackView.ownerLayout.applyConstraints {
+            $0.top(at: self.aproachTableViewTitle.bottomAnchor, distance: 10)
             $0.leading(at: self.leadingAnchor, distance: 20)
             $0.trailing(at: self.trailingAnchor, distance: -20)
         }
         
         aproachTableView.ownerLayout.applyConstraints {
-            $0.top(at: self.aproachTableViewTitle.bottomAnchor, distance: 10)
-            $0.leading(at: self.leadingAnchor, distance: 20)
-            $0.trailing(at: self.trailingAnchor, distance: -20)
+            $0.top(at: self.aproachTableViewSubtitleSheetStackView.bottomAnchor, distance: 5)
+            $0.leading(at: self.aproachTableViewSubtitleSheetStackView.leadingAnchor)
+            $0.trailing(at: self.aproachTableViewSubtitleSheetStackView.trailingAnchor)
             $0.bottom(at: self.safeAreaLayoutGuide.bottomAnchor)
         }
         

@@ -16,6 +16,11 @@ struct WalletMock {
         static let asset = listOfAssetMock.first!
     }
     
+    struct Aproach {
+        static let listOfAproach = lisOfAssetAproachMock
+        static let aproach = lisOfAssetAproachMock.first!
+    }
+    
 }
 
 //MARK: - Mock properties
@@ -44,5 +49,13 @@ fileprivate let listOfAssetMock: [AssetModel] = [
                assetSegment: "Software - Infrastructure",
                assetPrice: 2302.312,
                assetQuantity: 0.23, assetType: .USAStocks)
+]
+
+fileprivate let lisOfAssetAproachMock: [WalletAssetAproachDetailModel] = [
+    .init(dateOfAproach: "2021-10-22", valueOfAssetAproach: 200, quantityOfAssets: 30),
+    .init(dateOfAproach: "2021-10-15", valueOfAssetAproach: 20, quantityOfAssets: 35.635),
+    .init(dateOfAproach: "2021-09-12", valueOfAssetAproach: 500, quantityOfAssets: 40),
+    .init(dateOfAproach: "2021-08-01", valueOfAssetAproach: 100, quantityOfAssets: 20),
+    .init(dateOfAproach: "2021-07-01", valueOfAssetAproach: 10, quantityOfAssets: 0.4)
 ]
 

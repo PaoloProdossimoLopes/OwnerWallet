@@ -11,6 +11,7 @@ import UIKit
 final class WalletDetailCoordinator: Coordinator {
     
     private let asset: AssetModel
+    private var listOfAproached: [WalletAssetAproachDetailModel] = []
     
     init(_ nav: UINavigationController, asset: AssetModel = WalletMock.Asset.asset) {
         self.asset = asset
@@ -18,7 +19,9 @@ final class WalletDetailCoordinator: Coordinator {
     }
     
     override func start() {
-        let viewModel = WallatDetailViewModel(asset: self.asset)
+        let viewModel = WallatDetailViewModel(
+            asset: self.asset, listOfAssetsAproacheds: WalletMock.Aproach.listOfAproach
+        )
         let controller = WalletDetailViewController(viewModel: viewModel)
         navigationController.present(controller, animated: true, completion: nil)
     }

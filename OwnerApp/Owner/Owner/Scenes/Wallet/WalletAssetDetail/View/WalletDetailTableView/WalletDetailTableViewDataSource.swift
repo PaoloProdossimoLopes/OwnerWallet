@@ -7,20 +7,41 @@
 
 import UIKit
 
-final class WalletDetailTableViewDataSource: NSObject {
+typealias WDTVDSProtocol = (NSObject & WalletDetailTableViewDataSourceProtocol)
+
+protocol WalletDetailTableViewDataSourceProtocol: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+}
+
+final class WalletDetailTableViewDataSource: WDTVDSProtocol {
     
-    override init() { }
+    private let viewModel: WalletDetailTableViewModelProtocol
+    
+    init(tableViewModel: WalletDetailTableViewModelProtocol) {
+        self.viewModel = tableViewModel
+    }
     
 }
 
-extension WalletDetailTableViewDataSource: UITableViewDataSource {
+//MARK: - UITableViewDataSource
+
+extension WalletDetailTableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.listOfAproach.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let index = indexPath.row
+        let aproachModel = viewModel.listOfAproach[index]
+        
+        guard let cell: WalletDetailTableViewCell = tableView.dequeueReusableCell(
+            withIdentifier: WalletDetailTableViewCell.registerName, for: indexPath
+        ) as? WalletDetailTableViewCell else { return UITableViewCell() }
+        
+        cell.setAproach(aproachModel)
+        cell.selectionStyle = .none
         return cell
     }
     

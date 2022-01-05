@@ -7,14 +7,28 @@
 
 import UIKit
 
-final class WalletDetailTableViewDelegate: NSObject {
+typealias WDTVDProtocol = (NSObject & WalletDetailTableViewDelegateProtocol)
+
+protocol WalletDetailTableViewDelegateProtocol: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+}
+
+final class WalletDetailTableViewDelegate: WDTVDProtocol {
     
-    override init() {
-        
+    private let vieModel: WalletDetailTableViewModelProtocol
+    
+    init(tableViewModel: WalletDetailTableViewModelProtocol) {
+        self.vieModel = tableViewModel
     }
     
 }
 
-extension WalletDetailTableViewDelegate: UITableViewDelegate {
+//MARK: - UITableViewDelegate
+
+extension WalletDetailTableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
     
 }

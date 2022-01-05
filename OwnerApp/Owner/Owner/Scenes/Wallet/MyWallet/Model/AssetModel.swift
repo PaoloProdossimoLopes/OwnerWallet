@@ -10,12 +10,16 @@ import OwnerLIB
 
 struct AssetModel {
     
+    //MARK: - Initializer properties
+    
     let assetCode: String 
     let assetName: String
     let assetSegment: String
     let assetPrice: Double
     let assetQuantity: Double
     let assetType: AssetType
+    
+    //MARK: - Computed properties
     
     var assetPriceFormatted: String {
         return self.assetPrice.getWithCurrencyFormatation()
@@ -26,8 +30,7 @@ struct AssetModel {
     }
     
     var assetAmountValue: Double {
-        let result = self.assetQuantity * self.assetPrice
-        return result
+        return (self.assetQuantity * self.assetPrice)
     }
     
     var assetAmountValueFormatted: String {

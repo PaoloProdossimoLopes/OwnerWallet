@@ -73,6 +73,8 @@ final class AssetTableView: UITableView {
     
 }
 
+//MARK: - AssetTableViewNavigateDelegate
+
 extension AssetTableView: AssetTableViewNavigateDelegate {
     func navigateToAssetDetail(_ asset: AssetModel) {
         self.navigateDelegate?.navigateToAssetDetail(asset)

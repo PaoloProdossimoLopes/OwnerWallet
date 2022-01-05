@@ -31,7 +31,7 @@ extension AssetTableViewDelegate: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-//        showDetailModalView(at: indexPath)
+        //showDetailModalView(at: indexPath)
         navigateToAssetDetailView(at: indexPath)
     }
     
@@ -45,7 +45,5 @@ extension AssetTableViewDelegate: UITableViewDelegate {
         let model = assets[indexPath.row]
         self.navigateDelegate?.navigateToAssetDetail(model)
     }
-    
-    
     
 }

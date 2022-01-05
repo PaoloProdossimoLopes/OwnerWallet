@@ -13,7 +13,11 @@ protocol WalltetViewModelProtocol {
 
 final class WalltetViewModel: WalltetViewModelProtocol {
     
+    //MARK: - Properties
+    
     var assets: [AssetModel]
+    
+    //MARK: - Constructor
     
     init(assets: [AssetModel]) {
         self.assets = assets

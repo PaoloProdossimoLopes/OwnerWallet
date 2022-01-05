@@ -8,13 +8,19 @@
 import Foundation
 
 enum AssetType {
+    
+    //MARK: - Cases
+    
     case USAStocks
     case BRStocks
     case FIIs
     case REITs
+    
 }
 
 extension AssetType {
+    
+    //MARK: - Computed properties
     
     var withDescription: String {
         switch self {

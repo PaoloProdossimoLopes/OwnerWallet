@@ -52,9 +52,9 @@ fileprivate let listOfAssetMock: [AssetModel] = [
 ]
 
 fileprivate let lisOfAssetAproachMock: [WalletAssetAproachDetailModel] = [
-    .init(dateOfAproach: "2021-10-22", valueOfAssetAproach: 200, quantityOfAssets: 30),
+    .init(dateOfAproach: "2021-10-22", valueOfAssetAproach: 20000, quantityOfAssets: 30),
     .init(dateOfAproach: "2021-10-15", valueOfAssetAproach: 20, quantityOfAssets: 35.635),
-    .init(dateOfAproach: "2021-09-12", valueOfAssetAproach: 500, quantityOfAssets: 40),
+    .init(dateOfAproach: "2021-09-12", valueOfAssetAproach: 5000000, quantityOfAssets: 40),
     .init(dateOfAproach: "2021-08-01", valueOfAssetAproach: 100, quantityOfAssets: 20),
     .init(dateOfAproach: "2021-07-01", valueOfAssetAproach: 10, quantityOfAssets: 0.4)
 ]

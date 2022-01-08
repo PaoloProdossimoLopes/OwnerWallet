@@ -41,6 +41,4 @@ extension MyWalletCoordinator: MyWalletCoordinatorNavigate {
     func navigateToAssetDetail(_ asset: AssetModel) {
         navigateDelegate?.navigateToDetail(asset)
     }
-    
-    
 }

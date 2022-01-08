@@ -19,7 +19,7 @@ public extension UIButton {
         button.setImage(image, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(target, action: action, for: .touchUpInside)
-        button.setButtonImageSize(34)
+        button.setButtonImageSize(imageSize)
         return button
     }
     

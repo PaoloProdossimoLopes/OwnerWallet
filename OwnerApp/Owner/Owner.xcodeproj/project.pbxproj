@@ -18,6 +18,7 @@
 		B14CA1E22785431B0010F5DA /* AssetInfoVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CA1E12785431B0010F5DA /* AssetInfoVerticalStackView.swift */; };
 		B14CA1E42785479F0010F5DA /* AssetVStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CA1E32785479E0010F5DA /* AssetVStackViewModel.swift */; };
 		B14CA1E6278547AF0010F5DA /* AssetHorizontalWithVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CA1E5278547AF0010F5DA /* AssetHorizontalWithVerticalStackView.swift */; };
+		B14CA1EE27865E4E0010F5DA /* OwnerPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CA1ED27865E4E0010F5DA /* OwnerPrimaryButton.swift */; };
 		B14F7B012780CD1800F24F9C /* AssetCodeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F7B002780CD1800F24F9C /* AssetCodeLabel.swift */; };
 		B14F7B032780D38D00F24F9C /* AssetTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F7B022780D38D00F24F9C /* AssetTableView.swift */; };
 		B14F7B062780D58A00F24F9C /* AssetTableViewDataSorce.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F7B052780D58A00F24F9C /* AssetTableViewDataSorce.swift */; };
@@ -58,6 +59,7 @@
 		B14CA1E12785431B0010F5DA /* AssetInfoVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfoVerticalStackView.swift; sourceTree = "<group>"; };
 		B14CA1E32785479E0010F5DA /* AssetVStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetVStackViewModel.swift; sourceTree = "<group>"; };
 		B14CA1E5278547AF0010F5DA /* AssetHorizontalWithVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetHorizontalWithVerticalStackView.swift; sourceTree = "<group>"; };
+		B14CA1ED27865E4E0010F5DA /* OwnerPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPrimaryButton.swift; sourceTree = "<group>"; };
 		B14F7B002780CD1800F24F9C /* AssetCodeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCodeLabel.swift; sourceTree = "<group>"; };
 		B14F7B022780D38D00F24F9C /* AssetTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTableView.swift; sourceTree = "<group>"; };
 		B14F7B052780D58A00F24F9C /* AssetTableViewDataSorce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTableViewDataSorce.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				B14CA1DF278540F50010F5DA /* AssetAmountInformationHorizontalStackView.swift */,
 				B14CA1E12785431B0010F5DA /* AssetInfoVerticalStackView.swift */,
 				B14CA1E5278547AF0010F5DA /* AssetHorizontalWithVerticalStackView.swift */,
+				B14CA1ED27865E4E0010F5DA /* OwnerPrimaryButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				B1CFA48F2771522200A02681 /* OwnerTabViewController.swift in Sources */,
 				B1CFA4972771637C00A02681 /* MyWalletViewController.swift in Sources */,
 				B14F7B082780D64400F24F9C /* AssetTableViewDelegate.swift in Sources */,
+				B14CA1EE27865E4E0010F5DA /* OwnerPrimaryButton.swift in Sources */,
 				B14CA1D32784F9310010F5DA /* WalletDetailTableViewDataSource.swift in Sources */,
 				B1533FD6276F061B00D92074 /* AppDelegate.swift in Sources */,
 				B14F7B172780FA1E00F24F9C /* MyWalletCoordinator.swift in Sources */,

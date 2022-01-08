@@ -53,7 +53,7 @@ final class WalletDetailTableView: UITableView {
     }
     
     private func configureTableView() {
-        isScrollEnabled = false
+        //isScrollEnabled = false
         separatorColor = .clear
         backgroundColor = .clear
         tableFooterView = UIView()

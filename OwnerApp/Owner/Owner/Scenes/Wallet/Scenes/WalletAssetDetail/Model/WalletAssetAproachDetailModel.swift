@@ -23,7 +23,7 @@ struct WalletAssetAproachDetailModel {
     }
     
     var valueOfAproachFormatted: String {
-        return valueOfAssetAproach.getWithCurrencyFormatation()
+        return valueOfAssetAproach.getCurrencyWithAbreviateFormatation()
     }
     
     var dateFormatted: String {

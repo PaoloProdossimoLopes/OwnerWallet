@@ -33,17 +33,10 @@ final class WallatDetailView: UIView {
         return .configureAditionalButtons(
             target: self, imageSystemName: "trash",
             color: .systemRed.withAlphaComponent(0.4),
-            action: #selector(trashButtonHandleTapped), imageSize: 10
+            action: #selector(trashButtonHandleTapped), imageSize: 26
         )
     }()
     
-    private lazy var edditAssetButton: UIButton = {
-        return .configureAditionalButtons(
-            target: self, imageSystemName: "pencil",
-            color: .lightGray.withAlphaComponent(0.8),
-            action: #selector(pencilButtonHandleTapped), imageSize: 28
-        )
-    }()
     
     private lazy var assetCodeLabel: AssetCodeLabel = {
         let label = AssetCodeLabel()
@@ -116,6 +109,11 @@ final class WallatDetailView: UIView {
         return table
     }()
     
+    private lazy var addNewAssetAproachButton: OwnerPrimaryButtonProtocol = {
+        let button: OwnerPrimaryButtonProtocol = OwnerPrimaryButton(title: "ADD INVESTIMENTO")
+        button.delegate = self
+        return button
+    }()
     
     //MARK: - Constructor
     
@@ -139,7 +137,7 @@ final class WallatDetailView: UIView {
     
     private func configureViewHierarchy() {
         addSubview(removeAssetButton)
-        addSubview(edditAssetButton)
+        addSubview(addNewAssetAproachButton)
         addSubview(topViewDetailModalIndicator)
         addSubview(assetCodeLabel)
         addSubview(assetNameAndSegmentStackView)
@@ -170,13 +168,6 @@ final class WallatDetailView: UIView {
         removeAssetButton.ownerLayout.applyConstraints {
             $0.centerY(at: self.assetCodeLabel.centerYAnchor)
             $0.trailing(at: self.trailingAnchor, distance: -20)
-            $0.height(36)
-            $0.width(36)
-        }
-        
-        edditAssetButton.ownerLayout.applyConstraints {
-            $0.centerY(at: self.assetCodeLabel.centerYAnchor)
-            $0.leading(at: self.leadingAnchor, distance: 20)
             $0.height(36)
             $0.width(36)
         }
@@ -215,10 +206,14 @@ final class WallatDetailView: UIView {
             $0.top(at: self.aproachTableViewSubtitleSheetStackView.bottomAnchor, distance: 5)
             $0.leading(at: self.aproachTableViewSubtitleSheetStackView.leadingAnchor)
             $0.trailing(at: self.aproachTableViewSubtitleSheetStackView.trailingAnchor)
-            $0.greaterOrEqual(fixAt: self.safeAreaLayoutGuide.bottomAnchor)
+            $0.bottom(at: self.addNewAssetAproachButton.topAnchor, distance: -10)
         }
         
-        
+        addNewAssetAproachButton.ownerLayout.applyConstraints {
+            $0.centerX(at: self.centerXAnchor)
+            $0.bottom(at: self.safeAreaLayoutGuide.bottomAnchor, distance: -20)
+            $0.height(40)
+        }
         
     }
     
@@ -236,6 +231,12 @@ final class WallatDetailView: UIView {
         print("Pencil button was tapped")
     }
     
+}
+
+extension WallatDetailView: OwnerPrimaryButtonDelegate {
+    func buttonWasTapped(_ button: OwnerPrimaryButton) {
+        print("Was tapped")
+    }
 }
 
 //MARK: - WDVConst

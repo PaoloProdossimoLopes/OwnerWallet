@@ -26,8 +26,8 @@ extension AssetType {
         switch self {
             case .USAStocks: return "Stock"
             case .BRStocks: return "Ação"
-            case .FIIs: return "Fundo Imobiliario"
-            case .REITs: return "REIT"
+            case .FIIs: return "FIIs"
+            case .REITs: return "REITs"
         }
     }
     

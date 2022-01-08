@@ -33,6 +33,10 @@ struct AssetModel {
         return (self.assetQuantity * self.assetPrice)
     }
     
+    var assetAbreviateAmountValueForatted: String {
+        return self.assetAmountValue.getCurrencyWithAbreviateFormatation()
+    }
+    
     var assetAmountValueFormatted: String {
         return self.assetAmountValue.getWithCurrencyFormatation()
     }

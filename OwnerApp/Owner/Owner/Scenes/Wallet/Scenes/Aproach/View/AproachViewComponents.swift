@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import OwnerLIB
 
-final class AproachViewComponents {
+struct AproachViewComponents {
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -16,6 +17,14 @@ final class AproachViewComponents {
         label.font = .boldSystemFont(ofSize: 20)
         label.textAlignment = .center
         return label
+    }()
+    
+    let aproachButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("+", for: .normal)
+        button.backgroundColor = .ownerBlue
+        button.setTitleColor(.white, for: .normal)
+        return button
     }()
     
 }

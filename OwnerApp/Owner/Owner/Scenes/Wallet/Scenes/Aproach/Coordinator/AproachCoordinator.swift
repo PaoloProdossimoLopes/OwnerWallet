@@ -19,7 +19,8 @@ final class AproachCoordinator: Coordinator {
     }
     
     private func goToAproachView() {
-        let controller = AproachViewController()
+        let viewModel: AproachViewModel = .init()
+        let controller = AproachViewController(viewModel: viewModel)
         navigationController.show(controller, navigate: .present)
     }
     

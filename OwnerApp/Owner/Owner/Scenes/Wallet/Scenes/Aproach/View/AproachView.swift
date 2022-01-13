@@ -9,13 +9,20 @@ import UIKit
 
 final class AproachView: UIView {
     
+    //MARK: - Properties
+    
     private let components: AproachViewComponents
+    private let controller: AproachViewController
     
-    private var title: UILabel { components.titleLabel }
+    //MARK: - UI Components ref
     
-    override init(frame: CGRect) {
+    private(set) lazy var title = components.titleLabel
+    private(set) lazy var aproachButton = components.aproachButton
+    
+    init(_ controller: AproachViewController) {
+        self.controller = controller
         self.components = .init()
-        super.init(frame: frame)
+        super.init(frame: .zero)
         commonInit()
     }
     
@@ -27,10 +34,12 @@ final class AproachView: UIView {
         configureViewHierarchy()
         configureConstraints()
         configureStyle()
+        configureButton()
     }
     
     private func configureViewHierarchy() {
         addSubview(title)
+        addSubview(aproachButton)
     }
     
     private func configureConstraints() {
@@ -39,10 +48,26 @@ final class AproachView: UIView {
             $0.leading(at: self.leadingAnchor, distance: 20)
             $0.trailing(at: self.trailingAnchor, distance: -20)
         }
+        
+        aproachButton.ownerLayout.applyConstraints {
+            $0.bottom(at: self.safeAreaLayoutGuide.bottomAnchor, distance: -20)
+            $0.leading(at: self.leadingAnchor, distance: 20)
+            $0.trailing(at: self.trailingAnchor, distance: -20)
+        }
     }
     
     private func configureStyle() {
         backgroundColor = .white
+    }
+    
+    private func configureButton() {
+        aproachButton.addTarget(self,
+                                action: #selector(aproachButtonActionHandleTapped),
+                                for: .touchUpInside)
+    }
+    
+    @objc private func aproachButtonActionHandleTapped() {
+        print("Tap")
     }
     
 }

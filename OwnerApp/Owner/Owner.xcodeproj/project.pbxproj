@@ -45,6 +45,10 @@
 		B1CFA49A2778A5D900A02681 /* OwnerYourBalanceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CFA4992778A5D900A02681 /* OwnerYourBalanceInformation.swift */; };
 		B1CFA49C2778AB8E00A02681 /* AssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CFA49B2778AB8E00A02681 /* AssetTableViewCell.swift */; };
 		B1CFA49F2778AE8B00A02681 /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CFA49E2778AE8B00A02681 /* AssetModel.swift */; };
+		B1DE6699278FB27A0033483E /* AproachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE6698278FB27A0033483E /* AproachViewController.swift */; };
+		B1DE669C278FB2EB0033483E /* AproachCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE669B278FB2EB0033483E /* AproachCoordinator.swift */; };
+		B1DE669F278FB87C0033483E /* AproachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE669E278FB87C0033483E /* AproachView.swift */; };
+		B1DE66A1278FBC6A0033483E /* AproachViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66A0278FBC6A0033483E /* AproachViewComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +92,10 @@
 		B1CFA4992778A5D900A02681 /* OwnerYourBalanceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerYourBalanceInformation.swift; sourceTree = "<group>"; };
 		B1CFA49B2778AB8E00A02681 /* AssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTableViewCell.swift; sourceTree = "<group>"; };
 		B1CFA49E2778AE8B00A02681 /* AssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
+		B1DE6698278FB27A0033483E /* AproachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachViewController.swift; sourceTree = "<group>"; };
+		B1DE669B278FB2EB0033483E /* AproachCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachCoordinator.swift; sourceTree = "<group>"; };
+		B1DE669E278FB87C0033483E /* AproachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachView.swift; sourceTree = "<group>"; };
+		B1DE66A0278FBC6A0033483E /* AproachViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachViewComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +134,7 @@
 		B14CA1DC278537A70010F5DA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B1DE6696278FAC3A0033483E /* Aproach */,
 				B14F7B0E2780F90800F24F9C /* WalletAssetDetail */,
 				B14F7B142780F99E00F24F9C /* MyWallet */,
 			);
@@ -173,8 +182,8 @@
 		B14F7B0F2780F92000F24F9C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B14CA1D42784F9740010F5DA /* WalletDetailTableView */,
 				B14F7B122780F93B00F24F9C /* WalletDetailViewController.swift */,
+				B14CA1D42784F9740010F5DA /* WalletDetailTableView */,
 				B14F7B1B2781CDE200F24F9C /* WallatDetailView.swift */,
 				B14CA1DD27853E920010F5DA /* TitleAndSubtitleVStackView.swift */,
 				B14CA1DF278540F50010F5DA /* AssetAmountInformationHorizontalStackView.swift */,
@@ -317,6 +326,41 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B1DE6696278FAC3A0033483E /* Aproach */ = {
+			isa = PBXGroup;
+			children = (
+				B1DE669A278FB2D60033483E /* Coordinator */,
+				B1DE669D278FB86E0033483E /* Controller */,
+				B1DE6697278FB2660033483E /* View */,
+			);
+			path = Aproach;
+			sourceTree = "<group>";
+		};
+		B1DE6697278FB2660033483E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B1DE669E278FB87C0033483E /* AproachView.swift */,
+				B1DE66A0278FBC6A0033483E /* AproachViewComponents.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B1DE669A278FB2D60033483E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B1DE669B278FB2EB0033483E /* AproachCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B1DE669D278FB86E0033483E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B1DE6698278FB27A0033483E /* AproachViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -394,6 +438,7 @@
 				B14CA1DE27853E920010F5DA /* TitleAndSubtitleVStackView.swift in Sources */,
 				B1CFA49A2778A5D900A02681 /* OwnerYourBalanceInformation.swift in Sources */,
 				B1CFA48F2771522200A02681 /* OwnerTabViewController.swift in Sources */,
+				B1DE6699278FB27A0033483E /* AproachViewController.swift in Sources */,
 				B1CFA4972771637C00A02681 /* MyWalletViewController.swift in Sources */,
 				B14F7B082780D64400F24F9C /* AssetTableViewDelegate.swift in Sources */,
 				B14CA1EE27865E4E0010F5DA /* OwnerPrimaryButton.swift in Sources */,
@@ -403,11 +448,13 @@
 				B14F7B212781D61100F24F9C /* WallatDetailViewModel.swift in Sources */,
 				B1CFA4942771632200A02681 /* OwnerWalletCoordinator.swift in Sources */,
 				B14CA1D12784F8EF0010F5DA /* WalletDetailTableViewDelegate.swift in Sources */,
+				B1DE66A1278FBC6A0033483E /* AproachViewComponents.swift in Sources */,
 				B14F7B012780CD1800F24F9C /* AssetCodeLabel.swift in Sources */,
 				B1533FD8276F061B00D92074 /* SceneDelegate.swift in Sources */,
 				B14CA1E42785479F0010F5DA /* AssetVStackViewModel.swift in Sources */,
 				B1CFA49C2778AB8E00A02681 /* AssetTableViewCell.swift in Sources */,
 				B1CFA49F2778AE8B00A02681 /* AssetModel.swift in Sources */,
+				B1DE669C278FB2EB0033483E /* AproachCoordinator.swift in Sources */,
 				B14F7B0D2780F30200F24F9C /* WalltetViewModel.swift in Sources */,
 				B14F7B1C2781CDE300F24F9C /* WallatDetailView.swift in Sources */,
 				B1534007276F06E500D92074 /* OwnerCoordinator.swift in Sources */,
@@ -423,6 +470,7 @@
 				B19E0D2327791421006EC3C8 /* AssetDetailModalView.swift in Sources */,
 				B14F7B1E2781D27F00F24F9C /* AssetType.swift in Sources */,
 				B14CA1CF2784F6980010F5DA /* WalletDetailTableView.swift in Sources */,
+				B1DE669F278FB87C0033483E /* AproachView.swift in Sources */,
 				B14CA1E0278540F50010F5DA /* AssetAmountInformationHorizontalStackView.swift in Sources */,
 				B14CA1E6278547AF0010F5DA /* AssetHorizontalWithVerticalStackView.swift in Sources */,
 			);

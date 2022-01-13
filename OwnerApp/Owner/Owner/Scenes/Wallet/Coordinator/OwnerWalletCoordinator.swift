@@ -50,6 +50,7 @@ final class OwnerWalletCoordinator: Coordinator {
     
     private func navigateToAssetDetail(_ asset: AssetModel) {
         walletDetailCoordinator = .init(navigationController, asset: asset)
+        walletDetailCoordinator.navigate = self
         walletDetailCoordinator.start()
     }
     
@@ -60,7 +61,13 @@ extension OwnerWalletCoordinator: OwnerWalletCoordinatorNavigate {
     func navigateToDetail(_ asset: AssetModel) {
         navigateToAssetDetail(asset)
     }
+}
+
+extension OwnerWalletCoordinator: WalletDetailCoordinatorNavigate {
     
+    func navigateToBack() {
+        navigationController.close(.pop)
+    }
     
 }
 

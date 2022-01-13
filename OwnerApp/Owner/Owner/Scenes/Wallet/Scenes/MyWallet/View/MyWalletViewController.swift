@@ -124,7 +124,7 @@ final class MyWalletViewController: UIViewController {
     func configureStyle() {
         view.backgroundColor = .white
         
-        navigationItem.title = "Minha carteira"
+        navigationItem.title = "CARTEIRA"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
     

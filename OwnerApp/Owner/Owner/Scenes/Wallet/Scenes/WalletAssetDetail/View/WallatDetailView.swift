@@ -9,7 +9,9 @@ import UIKit
 import OwnerLIB
 
 protocol WallatDetailViewDelegate: AnyObject {
-    
+    func removeAsset(_ asset: AssetModel)
+    func navigateToAproach()
+    func navigateToBack()
 }
 
 final class WallatDetailView: UIView {
@@ -21,12 +23,21 @@ final class WallatDetailView: UIView {
     
     //MARK: - UI Components
     
-    private lazy var topViewDetailModalIndicator: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray.withAlphaComponent(0.3)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = WDVConst.Layout.topIndicatorHeight/2
-        return view
+//    private lazy var topViewDetailModalIndicator: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .lightGray.withAlphaComponent(0.3)
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.cornerRadius = WDVConst.Layout.topIndicatorHeight/2
+//        return view
+//    }()
+    
+    private lazy var backButton: UIButton = {
+        let image = UIImage(systemName: "arrow.left")?.withTintColor(.ownerBlue, renderingMode: .alwaysOriginal)
+        let button = UIButton()
+        button.setImage(image, for: .normal)
+        button.setButtonImageSize(24)
+        button.addTarget(self, action: #selector(backButtonHandleTapped), for: .touchUpInside)
+        return button
     }()
     
     private lazy var removeAssetButton: UIButton = {
@@ -110,7 +121,7 @@ final class WallatDetailView: UIView {
     }()
     
     private lazy var addNewAssetAproachButton: OwnerPrimaryButtonProtocol = {
-        let button: OwnerPrimaryButtonProtocol = OwnerPrimaryButton(title: "ADD INVESTIMENTO")
+        let button: OwnerPrimaryButtonProtocol = OwnerPrimaryButton(title: "APORTAR")
         button.delegate = self
         return button
     }()
@@ -138,7 +149,8 @@ final class WallatDetailView: UIView {
     private func configureViewHierarchy() {
         addSubview(removeAssetButton)
         addSubview(addNewAssetAproachButton)
-        addSubview(topViewDetailModalIndicator)
+//        addSubview(topViewDetailModalIndicator)
+        addSubview(backButton)
         addSubview(assetCodeLabel)
         addSubview(assetNameAndSegmentStackView)
         addSubview(assetAmmountHorizontalStackView)
@@ -151,15 +163,16 @@ final class WallatDetailView: UIView {
     
     private func configureConstarints() {
         
-        topViewDetailModalIndicator.ownerLayout.applyConstraints {
-            $0.centerX(at: self.centerXAnchor)
-            $0.top(at: self.topAnchor, distance: 10)
-            $0.height(WDVConst.Layout.topIndicatorHeight)
-            $0.width(WDVConst.Layout.topIndicatorWidth)
-        }
+//        topViewDetailModalIndicator.ownerLayout.applyConstraints {
+//            $0.centerX(at: self.centerXAnchor)
+//            $0.top(at: self.safeAreaLayoutGuide.topAnchor, distance: 10)
+//            $0.height(WDVConst.Layout.topIndicatorHeight)
+//            $0.width(WDVConst.Layout.topIndicatorWidth)
+//        }
         
         assetCodeLabel.ownerLayout.applyConstraints {
-            $0.top(at: topViewDetailModalIndicator.bottomAnchor, distance: 20)
+            //$0.top(at: topViewDetailModalIndicator.bottomAnchor, distance: 20)
+            $0.top(at: self.safeAreaLayoutGuide.topAnchor, distance: 10)
             $0.centerX(at: self.centerXAnchor)
             $0.height(40)
             $0.width(3*40)
@@ -168,6 +181,13 @@ final class WallatDetailView: UIView {
         removeAssetButton.ownerLayout.applyConstraints {
             $0.centerY(at: self.assetCodeLabel.centerYAnchor)
             $0.trailing(at: self.trailingAnchor, distance: -20)
+            $0.height(36)
+            $0.width(36)
+        }
+        
+        backButton.ownerLayout.applyConstraints {
+            $0.centerY(at: self.assetCodeLabel.centerYAnchor)
+            $0.leading(at: self.leadingAnchor, distance: 20)
             $0.height(36)
             $0.width(36)
         }
@@ -224,18 +244,18 @@ final class WallatDetailView: UIView {
     //MARK: - Selectors
     
     @objc private func trashButtonHandleTapped() {
-        print("Trash button was tapped")
+        delegate?.removeAsset(viewModel.asset)
     }
     
-    @objc private func pencilButtonHandleTapped() {
-        print("Pencil button was tapped")
+    @objc private func backButtonHandleTapped() {
+        delegate?.navigateToBack()
     }
     
 }
 
 extension WallatDetailView: OwnerPrimaryButtonDelegate {
     func buttonWasTapped(_ button: OwnerPrimaryButton) {
-        print("Was tapped")
+        delegate?.navigateToAproach()
     }
 }
 

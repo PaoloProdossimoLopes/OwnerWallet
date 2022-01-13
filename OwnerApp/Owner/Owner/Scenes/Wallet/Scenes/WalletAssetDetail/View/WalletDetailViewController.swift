@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol WalletDetailViewControllerNavigate: AnyObject {
+    func navigateToAproach()
+    func navigateToBack()
+}
+
 final class WalletDetailViewController: UIViewController {
     
     //MARK: - Properties
     
     private let viewModel: WallatDetailViewModelProtocol
+    weak var navigate: WalletDetailViewControllerNavigate?
     
     private lazy var detailView: WallatDetailView = {
         let view = WallatDetailView(viewModel: self.viewModel)
@@ -30,7 +36,6 @@ final class WalletDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     //MARK: - Lifecycle
     
     override func loadView() {
@@ -40,26 +45,6 @@ final class WalletDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        commonInit()
-    }
-    
-    //MARK: - Helpers
-    
-    private func commonInit() {
-        configureViewHierachy()
-        configureConstraints()
-        configureStyle()
-    }
-    
-    func configureViewHierachy() {
-        
-    }
-    
-    func configureConstraints() {
-        
-    }
-    
-    func configureStyle() {
         
     }
     
@@ -67,5 +52,17 @@ final class WalletDetailViewController: UIViewController {
 
 //MARK: - WallatDetailViewDelegate
 extension WalletDetailViewController: WallatDetailViewDelegate {
+    
+    func removeAsset(_ asset: AssetModel) {
+        //TODO: Remove asset
+    }
+    
+    func navigateToAproach() {
+        navigate?.navigateToAproach()
+    }
+    
+    func navigateToBack() {
+        navigate?.navigateToBack()
+    }
     
 }

@@ -50,6 +50,7 @@
 		B1DE669F278FB87C0033483E /* AproachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE669E278FB87C0033483E /* AproachView.swift */; };
 		B1DE66A1278FBC6A0033483E /* AproachViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66A0278FBC6A0033483E /* AproachViewComponents.swift */; };
 		B1DE66A4278FC0600033483E /* AproachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66A3278FC0600033483E /* AproachViewModel.swift */; };
+		B1DE66A727918EFD0033483E /* OwnerCustomTextFieldArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66A627918EFD0033483E /* OwnerCustomTextFieldArea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		B1DE669E278FB87C0033483E /* AproachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachView.swift; sourceTree = "<group>"; };
 		B1DE66A0278FBC6A0033483E /* AproachViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachViewComponents.swift; sourceTree = "<group>"; };
 		B1DE66A3278FC0600033483E /* AproachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachViewModel.swift; sourceTree = "<group>"; };
+		B1DE66A627918EFD0033483E /* OwnerCustomTextFieldArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerCustomTextFieldArea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +346,7 @@
 			children = (
 				B1DE669E278FB87C0033483E /* AproachView.swift */,
 				B1DE66A0278FBC6A0033483E /* AproachViewComponents.swift */,
+				B1DE66A627918EFD0033483E /* OwnerCustomTextFieldArea.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				B1534007276F06E500D92074 /* OwnerCoordinator.swift in Sources */,
 				B14CA1E22785431B0010F5DA /* AssetInfoVerticalStackView.swift in Sources */,
 				B1DE66A4278FC0600033483E /* AproachViewModel.swift in Sources */,
+				B1DE66A727918EFD0033483E /* OwnerCustomTextFieldArea.swift in Sources */,
 				B14F7B132780F93B00F24F9C /* WalletDetailViewController.swift in Sources */,
 				B14CA1D92784FED60010F5DA /* WalletDetailTableViewModel.swift in Sources */,
 				B14F7B1A2780FD8900F24F9C /* WalletDetailCoordinator.swift in Sources */,

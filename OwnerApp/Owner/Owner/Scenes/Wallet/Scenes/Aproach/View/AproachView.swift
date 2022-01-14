@@ -11,13 +11,10 @@ final class AproachView: UIView {
     
     //MARK: - Properties
     
-    private let components: AproachViewComponents
+    private var components: AproachViewComponents
     private let controller: AproachViewController
     
-    //MARK: - UI Components ref
-    
-    private(set) lazy var title = components.titleLabel
-    private(set) lazy var aproachButton = components.aproachButton
+    //MARK: - Constructor
     
     init(_ controller: AproachViewController) {
         self.controller = controller
@@ -30,6 +27,8 @@ final class AproachView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Helpers
+    
     private func commonInit() {
         configureViewHierarchy()
         configureConstraints()
@@ -38,32 +37,50 @@ final class AproachView: UIView {
     }
     
     private func configureViewHierarchy() {
-        addSubview(title)
-        addSubview(aproachButton)
+        [components.assetHStackView, components.assetPriceTF, UIView()]
+            .forEach { components.mainTextViewStackView.addArrangedSubview($0) }
+        
+        addSubview(components.titleLabel)
+        addSubview(components.mainTextViewStackView)
+        addSubview(components.aproachButton)
     }
     
     private func configureConstraints() {
-        title.ownerLayout.applyConstraints {
+        components.titleLabel.ownerLayout.applyConstraints {
             $0.top(at: self.safeAreaLayoutGuide.topAnchor, distance: 30)
             $0.leading(at: self.leadingAnchor, distance: 20)
             $0.trailing(at: self.trailingAnchor, distance: -20)
         }
         
-        aproachButton.ownerLayout.applyConstraints {
+        components.mainTextViewStackView.ownerLayout.applyConstraints {
+            $0.top(at: self.components.titleLabel.bottomAnchor, distance: 20)
+            $0.leading(at: self.leadingAnchor, distance: 20)
+            $0.trailing(at: self.trailingAnchor, distance: -20)
+            $0.bottom(at: self.components.aproachButton.topAnchor, distance: -20)
+        }
+        
+        components.aproachButton.ownerLayout.applyConstraints {
             $0.bottom(at: self.safeAreaLayoutGuide.bottomAnchor, distance: -20)
             $0.leading(at: self.leadingAnchor, distance: 20)
             $0.trailing(at: self.trailingAnchor, distance: -20)
         }
+        
+        components.assetCodeLabel.ownerLayout.applyConstraints {
+            $0.height(40)
+            $0.width(100)
+        }
+        
     }
     
     private func configureStyle() {
         backgroundColor = .white
+        isUserInteractionEnabled = true
     }
     
     private func configureButton() {
-        aproachButton.addTarget(self,
-                                action: #selector(aproachButtonActionHandleTapped),
-                                for: .touchUpInside)
+        components.aproachButton.addTarget(
+            self, action: #selector(aproachButtonActionHandleTapped), for: .touchUpInside
+        )
     }
     
     @objc private func aproachButtonActionHandleTapped() {

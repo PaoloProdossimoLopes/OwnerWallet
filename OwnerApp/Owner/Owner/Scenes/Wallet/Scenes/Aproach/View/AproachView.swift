@@ -37,7 +37,8 @@ final class AproachView: UIView {
     }
     
     private func configureViewHierarchy() {
-        [components.assetHStackView, components.assetPriceTF, UIView()]
+        [components.assetHStackView, components.assetPriceTF, components.assetDateTF,
+         components.assetQuantityTF, UIView()]
             .forEach { components.mainTextViewStackView.addArrangedSubview($0) }
         
         addSubview(components.titleLabel)
@@ -63,6 +64,7 @@ final class AproachView: UIView {
             $0.bottom(at: self.safeAreaLayoutGuide.bottomAnchor, distance: -20)
             $0.leading(at: self.leadingAnchor, distance: 20)
             $0.trailing(at: self.trailingAnchor, distance: -20)
+            $0.height(40)
         }
         
         components.assetCodeLabel.ownerLayout.applyConstraints {

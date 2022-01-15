@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B13FDFFF2792FF78001B7452 /* AssetsHomeAPIMock.json in Resources */ = {isa = PBXBuildFile; fileRef = B13FDFFE2792FF78001B7452 /* AssetsHomeAPIMock.json */; };
 		B14CA1CF2784F6980010F5DA /* WalletDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CA1CE2784F6980010F5DA /* WalletDetailTableView.swift */; };
 		B14CA1D12784F8EF0010F5DA /* WalletDetailTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CA1D02784F8EF0010F5DA /* WalletDetailTableViewDelegate.swift */; };
 		B14CA1D32784F9310010F5DA /* WalletDetailTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CA1D22784F9310010F5DA /* WalletDetailTableViewDataSource.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B13FDFFE2792FF78001B7452 /* AssetsHomeAPIMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AssetsHomeAPIMock.json; sourceTree = "<group>"; };
 		B14CA1CE2784F6980010F5DA /* WalletDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailTableView.swift; sourceTree = "<group>"; };
 		B14CA1D02784F8EF0010F5DA /* WalletDetailTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailTableViewDelegate.swift; sourceTree = "<group>"; };
 		B14CA1D22784F9310010F5DA /* WalletDetailTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -129,6 +131,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B13FDFFD2792FF59001B7452 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B13FDFFE2792FF78001B7452 /* AssetsHomeAPIMock.json */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		B14CA1D42784F9740010F5DA /* WalletDetailTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +287,7 @@
 			children = (
 				B1534006276F06E500D92074 /* OwnerCoordinator.swift */,
 				B1CFA48E2771522200A02681 /* OwnerTabViewController.swift */,
+				B13FDFFD2792FF59001B7452 /* Mocks */,
 				B1CFA490277162FF00A02681 /* Scenes */,
 				B1534005276F062C00D92074 /* Defaults */,
 				B1533FE3276F061F00D92074 /* Info.plist */,
@@ -490,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B13FDFFF2792FF78001B7452 /* AssetsHomeAPIMock.json in Resources */,
 				B1DE66B1279263DE0033483E /* AssetAPIDefaultJSONResponseMock.json in Resources */,
 				B1DE66B527926BA90033483E /* AssetAproachds.json in Resources */,
 				B1DE66B32792677D0033483E /* ListOfAssetAPIDefaultJSONResponseMock.json in Resources */,

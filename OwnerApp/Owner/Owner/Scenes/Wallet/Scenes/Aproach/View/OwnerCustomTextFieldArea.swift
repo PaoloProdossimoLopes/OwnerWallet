@@ -9,9 +9,13 @@ import UIKit
 
 final class OwnerCustomTextFieldArea: UIStackView {
     
+    //MARK: - Properties
+    
     let title: String
     let imageName: String
     let placeholder: String
+    
+    //MARK: - Components
     
     private lazy var imagePlaceholder: UIImageView = {
         let image = UIImage(systemName: imageName)?
@@ -47,6 +51,8 @@ final class OwnerCustomTextFieldArea: UIStackView {
         return stack
     }()
     
+    //MARK: - Constructor
+    
     init(image: String, title: String, placeholder: String) {
         self.imageName = image
         self.title = title
@@ -58,6 +64,8 @@ final class OwnerCustomTextFieldArea: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Helpers
     
     private func commonInit() {
         configureViewHierarchy()
@@ -80,7 +88,7 @@ final class OwnerCustomTextFieldArea: UIStackView {
         }
         
         imagePlaceholder.ownerLayout.applyConstraints {
-            $0.width(30)
+            $0.width(20)
         }
     }
     

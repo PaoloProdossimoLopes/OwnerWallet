@@ -126,15 +126,23 @@ open class OwnerRequester: NSObject {
         print("\n📡 <<<<<<<<<<|  END  PERFORM |>>>>>>>>>> 📡\n\n")
     }
     
+    private func startHeaderPrinter() -> String {
+        return "--------| START |-------"
+    }
+    
+    private func endFooterPrinter() -> String {
+        return "--------|  END  |-------"
+    }
+    
     private func DEBUGDecoderErrorPrinter(_ error: OwnerDecodeError) {
         let message = """
         
-          --------| START |-------
+          \(startHeaderPrinter())
             ❌ DEBUG: Decoding Error ❌
             ❗️DESCRIBE: \(error.decribeError)
             ❗️ENUM: \(error)
             ❗️LOCALIZED DESCRIPTION: \(error.localizedDescription)
-          --------|  END  |-------
+          \(endFooterPrinter())
         
         """
         print(message)
@@ -145,10 +153,10 @@ open class OwnerRequester: NSObject {
     private func DEBUGParseErrorPrinter(_ request: RequestProtocol) {
         let message = """
         
-          --------| START |-------
+          \(startHeaderPrinter())
             ❌ DEBUG: BAD URL AT \(request.autoDescribing) ❌
             ❗️DESCRIBE: That URL is Invalid, plese check if its ok.
-          --------|  END  |-------
+          \(endFooterPrinter())
                 
         """
         print(message)
@@ -161,10 +169,10 @@ open class OwnerRequester: NSObject {
     ) {
         let message = """
         
-          --------| START |--------
+          \(startHeaderPrinter())
             ❌ DEBUG: Service Error ❌
             ❗️DESCRIBE: \(error.decribeError)
-          --------|  END  |--------
+          \(endFooterPrinter())
         
         """
         print(message)
@@ -179,12 +187,12 @@ open class OwnerRequester: NSObject {
         let statusMessageText = isSuccessfull ? "SUCCESS" : "FAILURE"
         let message = """
         
-          --------| START |-------
+          \(startHeaderPrinter())
             📥 DEBUG: Response 📥
             \(statusImageText) STATUS: \(statusMessageText)
             ▶️ ENDPOINT: \(request.urlString)
             ▶️ STATUS CODE: \(response.statusCode)
-          --------|  END  |-------
+          \(endFooterPrinter())
         
         """
         print(message)

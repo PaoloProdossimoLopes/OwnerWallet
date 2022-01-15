@@ -30,18 +30,35 @@ open class OwnerRequester: NSObject {
             
             let response = self.reponseHandle(request: request, response: rawResponse)
             
-            DispatchQueue.main.async { [weak self] in
-                guard let currenteSelf = self else { return }
-                
-                if let error = rawError {
-                    currenteSelf.serviceErrorHandler(http: response, error: error, completion: completion)
-                } else {
-                    currenteSelf.dataHandler(rawData, type: T.self, completion: completion)
-                }
-            }
+            self.dispachHandler(
+                response: response, rawError: rawError,  rawData: rawData,
+                type: T.self, completion: completion
+            )
         }
         
         task.resume()
+    }
+    
+    //MARK: - Handlers
+    
+    private func dispachHandler<T: Codable>(
+        response: HTTPURLResponse?, rawError: Error?,
+        rawData: Data?, type: T.Type,
+        completion: @escaping (Result<T, Error>) -> Void
+    ) {
+        DispatchQueue.main.async { [weak self] in
+            guard let currenteSelf = self else { return }
+            
+            if let error = rawError {
+                currenteSelf.serviceErrorHandler(
+                    http: response, error: error, completion: completion
+                )
+            } else {
+                currenteSelf.dataHandler(
+                    rawData, type: T.self, completion: completion
+                )
+            }
+        }
     }
     
     private func reponseHandle(
@@ -98,6 +115,8 @@ open class OwnerRequester: NSObject {
         }
         
     }
+    
+    //MARK: - Printers
     
     private func startperformPrinter() {
         print("\n\n📡 <<<<<<<<<<| START PERFORM |>>>>>>>>>> 📡\n")

@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum AssetType {
+enum AssetType: Int {
     
     //MARK: - Cases
     
-    case USAStocks
-    case BRStocks
-    case FIIs
-    case REITs
+    case USAStocks = 1
+    case BRStocks = 2
+    case FIIs = 3
+    case REITs = 4
     
 }
 

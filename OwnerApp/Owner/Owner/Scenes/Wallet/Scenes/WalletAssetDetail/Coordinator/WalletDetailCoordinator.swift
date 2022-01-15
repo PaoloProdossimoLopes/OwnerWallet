@@ -20,12 +20,13 @@ final class WalletDetailCoordinator: Coordinator {
     private var listOfAproached: [WalletAssetAproachDetailModel] = []
     
     private var aproachCoordinator: AproachCoordinator?
+    private let service: WalletAssetDetailAPI = .shared
     
     weak var navigate: WalletDetailCoordinatorNavigate?
     
     //MARK: - Constructor
     
-    init(_ nav: UINavigationController, asset: AssetModel = WalletMock.Asset.asset) {
+    init(_ nav: UINavigationController, asset: AssetModel) {
         self.asset = asset
         super.init(with: nav)
         aproachCoordinator = .init(nav)
@@ -34,9 +35,24 @@ final class WalletDetailCoordinator: Coordinator {
     //MARK: - Starter
     
     override func start() {
+        callAPIs()
+    }
+    
+    private func callAPIs() {
+        service.fetchListOfAproacheds { [weak self] reponseList in
+            reponseList.forEach { response in
+                let model = WalletAssetAproachDetailModel(response: response)
+                self?.listOfAproached.append(model)
+            }
+            
+            showWalletDetailView()
+        }
+    }
+    
+    private func showWalletDetailView() {
         let viewModel = WallatDetailViewModel(
             asset: self.asset,
-            listOfAssetsAproacheds: WalletMock.Aproach.listOfAproach
+            listOfAssetsAproacheds: listOfAproached
         )
         let controller = WalletDetailViewController(viewModel: viewModel)
         controller.navigate = self

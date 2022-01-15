@@ -16,6 +16,12 @@ struct WalletAssetAproachDetailModel {
     let valueOfAssetAproach: Double
     let quantityOfAssets: Double
     
+    init(response: ListOfAproachsResponse) {
+        self.dateOfAproach = response.date
+        self.valueOfAssetAproach = response.value
+        self.quantityOfAssets = response.quantity
+    }
+    
     //MARK: - Computed properties
     
     var quantityOfAssetsFormatted: String {

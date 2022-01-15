@@ -10,7 +10,7 @@ import UIKit
 import OwnerLIB
 import OwnerHome
 
-final class OwnerCoordinator {
+final class OwnerCoordinator: NSObject {
     
     var navigationController: UINavigationController
     

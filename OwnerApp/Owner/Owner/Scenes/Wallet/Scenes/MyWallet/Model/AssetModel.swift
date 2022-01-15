@@ -19,6 +19,15 @@ struct AssetModel {
     let assetQuantity: Double
     let assetType: AssetType
     
+    init(response: AssetModelResponse) {
+        self.assetCode = response.code
+        self.assetName = response.name
+        self.assetSegment = response.segment
+        self.assetPrice = response.price
+        self.assetQuantity = response.quantity
+        self.assetType = .init(rawValue: response.type) ?? .BRStocks
+    }
+    
     //MARK: - Computed properties
     
     var assetPriceFormatted: String {

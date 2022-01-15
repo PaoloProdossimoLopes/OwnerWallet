@@ -14,18 +14,33 @@ protocol MyWalletCoordinatorNavigate: AnyObject {
 
 final class MyWalletCoordinator: Coordinator {
     
-    var currentViewController: UINavigationController = .init()
-    var asset: AssetModel
-    
     weak var navigateDelegate: OwnerWalletCoordinatorNavigate?
     
-    init(navigation: UINavigationController, asset: AssetModel = WalletMock.Asset.asset) {
-        self.asset = asset
+    var currentViewController: UINavigationController = .init()
+    private var assets: [AssetModel] = []
+    
+    private let service: MyWalletAPI = .shared
+    
+    init(navigation: UINavigationController) {
         super.init(with: navigation)
     }
     
     override func start() {
-        let assets: [AssetModel] =  WalletMock.Asset.lisOfAsset
+        callAPI()
+    }
+    
+    private func callAPI() {
+        service.fetchListOfAssets { [weak self] reponseList in
+            reponseList.forEach {
+                let model = AssetModel(response: $0)
+                self?.assets.append(model)
+            }
+            
+            showWalletView()
+        }
+    }
+    
+    private func showWalletView() {
         let viewModel = WalltetViewModel(assets: assets)
         let viewController = MyWalletViewController(viewModel: viewModel)
         

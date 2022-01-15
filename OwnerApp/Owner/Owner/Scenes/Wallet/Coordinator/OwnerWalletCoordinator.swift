@@ -19,7 +19,7 @@ final class OwnerWalletCoordinator: Coordinator {
     
     //MARK: - Coordinators
     private var myWalletCoordinator: MyWalletCoordinator
-    private var walletDetailCoordinator: WalletDetailCoordinator
+    private var walletDetailCoordinator: WalletDetailCoordinator?
     
     //MARK: - Constructor
     
@@ -30,7 +30,6 @@ final class OwnerWalletCoordinator: Coordinator {
         
         let nav = myWalletCoordinator.currentViewController
         currentController = nav
-        walletDetailCoordinator = .init(nav)
         
         super.init(with: nav)
         
@@ -50,8 +49,8 @@ final class OwnerWalletCoordinator: Coordinator {
     
     private func navigateToAssetDetail(_ asset: AssetModel) {
         walletDetailCoordinator = .init(navigationController, asset: asset)
-        walletDetailCoordinator.navigate = self
-        walletDetailCoordinator.start()
+        walletDetailCoordinator?.navigate = self
+        walletDetailCoordinator?.start()
     }
     
 }

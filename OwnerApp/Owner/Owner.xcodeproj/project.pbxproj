@@ -51,6 +51,13 @@
 		B1DE66A1278FBC6A0033483E /* AproachViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66A0278FBC6A0033483E /* AproachViewComponents.swift */; };
 		B1DE66A4278FC0600033483E /* AproachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66A3278FC0600033483E /* AproachViewModel.swift */; };
 		B1DE66A727918EFD0033483E /* OwnerCustomTextFieldArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66A627918EFD0033483E /* OwnerCustomTextFieldArea.swift */; };
+		B1DE66AC27925DA50033483E /* MyWalletAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66AB27925DA50033483E /* MyWalletAPI.swift */; };
+		B1DE66AE279260E00033483E /* AssetModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66AD279260E00033483E /* AssetModelResponse.swift */; };
+		B1DE66B1279263DE0033483E /* AssetAPIDefaultJSONResponseMock.json in Resources */ = {isa = PBXBuildFile; fileRef = B1DE66B0279263DE0033483E /* AssetAPIDefaultJSONResponseMock.json */; };
+		B1DE66B32792677D0033483E /* ListOfAssetAPIDefaultJSONResponseMock.json in Resources */ = {isa = PBXBuildFile; fileRef = B1DE66B22792677D0033483E /* ListOfAssetAPIDefaultJSONResponseMock.json */; };
+		B1DE66B527926BA90033483E /* AssetAproachds.json in Resources */ = {isa = PBXBuildFile; fileRef = B1DE66B427926BA90033483E /* AssetAproachds.json */; };
+		B1DE66B927926BD10033483E /* WalletAssetDetailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66B827926BD10033483E /* WalletAssetDetailAPI.swift */; };
+		B1DE66BB27926DC60033483E /* ListOfAproachsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE66BA27926DC60033483E /* ListOfAproachsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +107,13 @@
 		B1DE66A0278FBC6A0033483E /* AproachViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachViewComponents.swift; sourceTree = "<group>"; };
 		B1DE66A3278FC0600033483E /* AproachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AproachViewModel.swift; sourceTree = "<group>"; };
 		B1DE66A627918EFD0033483E /* OwnerCustomTextFieldArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerCustomTextFieldArea.swift; sourceTree = "<group>"; };
+		B1DE66AB27925DA50033483E /* MyWalletAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletAPI.swift; sourceTree = "<group>"; };
+		B1DE66AD279260E00033483E /* AssetModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModelResponse.swift; sourceTree = "<group>"; };
+		B1DE66B0279263DE0033483E /* AssetAPIDefaultJSONResponseMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AssetAPIDefaultJSONResponseMock.json; sourceTree = "<group>"; };
+		B1DE66B22792677D0033483E /* ListOfAssetAPIDefaultJSONResponseMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListOfAssetAPIDefaultJSONResponseMock.json; sourceTree = "<group>"; };
+		B1DE66B427926BA90033483E /* AssetAproachds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AssetAproachds.json; sourceTree = "<group>"; };
+		B1DE66B827926BD10033483E /* WalletAssetDetailAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAssetDetailAPI.swift; sourceTree = "<group>"; };
+		B1DE66BA27926DC60033483E /* ListOfAproachsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfAproachsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +145,7 @@
 			children = (
 				B14CA1D62784FAAD0010F5DA /* WalletAssetAproachDetailModel.swift */,
 				B14CA1E32785479E0010F5DA /* AssetVStackViewModel.swift */,
+				B1DE66BA27926DC60033483E /* ListOfAproachsResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +190,8 @@
 		B14F7B0E2780F90800F24F9C /* WalletAssetDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B1DE66B727926BC40033483E /* API */,
+				B1DE66B627926BB80033483E /* Mocks */,
 				B14F7B182780FD8000F24F9C /* Coordinator */,
 				B14CA1D52784FA990010F5DA /* Model */,
 				B14F7B0F2780F92000F24F9C /* View */,
@@ -201,6 +218,8 @@
 		B14F7B142780F99E00F24F9C /* MyWallet */ = {
 			isa = PBXGroup;
 			children = (
+				B1DE66AF2792637D0033483E /* Mock */,
+				B1DE66AA27925D980033483E /* API */,
 				B14F7B152780FA0F00F24F9C /* Coordinator */,
 				B14F7B0B2780F2F000F24F9C /* ViewModel */,
 				B1CFA49D2778AE8400A02681 /* Model */,
@@ -325,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				B1CFA49E2778AE8B00A02681 /* AssetModel.swift */,
+				B1DE66AD279260E00033483E /* AssetModelResponse.swift */,
 				B14F7B1D2781D27F00F24F9C /* AssetType.swift */,
 			);
 			path = Model;
@@ -373,6 +393,39 @@
 				B1DE66A3278FC0600033483E /* AproachViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B1DE66AA27925D980033483E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B1DE66AB27925DA50033483E /* MyWalletAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		B1DE66AF2792637D0033483E /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				B1DE66B0279263DE0033483E /* AssetAPIDefaultJSONResponseMock.json */,
+				B1DE66B22792677D0033483E /* ListOfAssetAPIDefaultJSONResponseMock.json */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		B1DE66B627926BB80033483E /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B1DE66B427926BA90033483E /* AssetAproachds.json */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		B1DE66B727926BC40033483E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B1DE66B827926BD10033483E /* WalletAssetDetailAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,6 +490,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1DE66B1279263DE0033483E /* AssetAPIDefaultJSONResponseMock.json in Resources */,
+				B1DE66B527926BA90033483E /* AssetAproachds.json in Resources */,
+				B1DE66B32792677D0033483E /* ListOfAssetAPIDefaultJSONResponseMock.json in Resources */,
 				B1533FE2276F061F00D92074 /* LaunchScreen.storyboard in Resources */,
 				B1533FDF276F061F00D92074 /* Assets.xcassets in Resources */,
 			);
@@ -470,6 +526,7 @@
 				B1CFA49F2778AE8B00A02681 /* AssetModel.swift in Sources */,
 				B1DE669C278FB2EB0033483E /* AproachCoordinator.swift in Sources */,
 				B14F7B0D2780F30200F24F9C /* WalltetViewModel.swift in Sources */,
+				B1DE66AE279260E00033483E /* AssetModelResponse.swift in Sources */,
 				B14F7B1C2781CDE300F24F9C /* WallatDetailView.swift in Sources */,
 				B1534007276F06E500D92074 /* OwnerCoordinator.swift in Sources */,
 				B14CA1E22785431B0010F5DA /* AssetInfoVerticalStackView.swift in Sources */,
@@ -484,6 +541,9 @@
 				B14F7B062780D58A00F24F9C /* AssetTableViewDataSorce.swift in Sources */,
 				B14F7B0A2780DB7300F24F9C /* WalletMocks.swift in Sources */,
 				B19E0D2327791421006EC3C8 /* AssetDetailModalView.swift in Sources */,
+				B1DE66BB27926DC60033483E /* ListOfAproachsResponse.swift in Sources */,
+				B1DE66AC27925DA50033483E /* MyWalletAPI.swift in Sources */,
+				B1DE66B927926BD10033483E /* WalletAssetDetailAPI.swift in Sources */,
 				B14F7B1E2781D27F00F24F9C /* AssetType.swift in Sources */,
 				B14CA1CF2784F6980010F5DA /* WalletDetailTableView.swift in Sources */,
 				B1DE669F278FB87C0033483E /* AproachView.swift in Sources */,

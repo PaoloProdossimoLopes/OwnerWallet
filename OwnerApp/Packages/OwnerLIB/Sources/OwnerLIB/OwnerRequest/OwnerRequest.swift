@@ -86,6 +86,8 @@ open class OwnerRequester: NSObject {
         
         do {
             let object = try JSONDecoder().decode(type.self, from: data)
+            DEBUGSuccessDecoderPrinter(data)
+            endPerformPrinter()
             completion(.success(object))
             
         } catch DecodingError.keyNotFound(_, _) {
@@ -195,6 +197,23 @@ open class OwnerRequester: NSObject {
           \(endFooterPrinter())
         
         """
+        print(message)
+    }
+    
+    private func DEBUGSuccessDecoderPrinter(_ data: Data) {
+        
+        let json = String(data: data, encoding: .utf8) ?? ""
+        
+        let message = """
+        
+          \(startHeaderPrinter())
+            ✅ DECODER OBJECT SUCCEED
+            📝 JSON RECIEVED:
+            \(json)
+          \(endFooterPrinter())
+        
+        """
+        
         print(message)
     }
     

@@ -12,21 +12,16 @@ public class HomeCoordinator: Coordinator {
 
     public var currentController: UIViewController
     private var assets: [ListOfMainAssets] = []
-    
-    private let service: HomeAPI = .shared
+
 
     public override init(with navigation: UINavigationController) {
         
         let viewModel: HomeViewModel = .init()
-        let vc = HomeController(viewModel: viewModel)
+        let vc = HomeViewController(viewModel: viewModel)
         let nav = UINavigationController(rootViewController: vc)
         currentController = nav
         
         super.init(with: navigation)
-
-        service.fetchAssets { assets in
-            assets.forEach { viewModel.assets.append($0) }
-        }
         
         childCoordinators.append(self)
         configureTabBar()

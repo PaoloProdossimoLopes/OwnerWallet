@@ -3,24 +3,28 @@
         "code": "ITUB3",
         "name": "Itau Unibanco BBA",
         "segment": "Banco",
+        "description": "Presente em 18 países e foco em atividades de banco comercial, clientes institucionais e private banking.",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banco_Ita%C3%BA_logo.svg/1200px-Banco_Ita%C3%BA_logo.svg.png"
     },
     {
-        "code": "ITUB3",
-        "name": "Itau Unibanco BBA",
+        "code": "BBDC3",
+        "name": "Bradesco",
         "segment": "Banco",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banco_Ita%C3%BA_logo.svg/1200px-Banco_Ita%C3%BA_logo.svg.png"
+        "description": "Um dos maiores bancos do setor privado no Brasil em total de ativos e líder do mercado de seguros.",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_DYeDoSvOYy47Hnf8UrNTpS476j404mX_Jlmw5Km9tsEhmnFalLWYdc9YpKTJWA4kt2g&usqp=CAU"
     },
     {
-        "code": "ITUB3",
-        "name": "Itau Unibanco BBA",
-        "segment": "Banco",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banco_Ita%C3%BA_logo.svg/1200px-Banco_Ita%C3%BA_logo.svg.png"
+        "code": "MDIA3",
+        "name": "M DIAS BRANCO SA IND E COM DE ALIMENTOS",
+        "segment": "Alimenticío",
+        "description": "Líder nos mercados de biscoitos e de massas no Brasil e posição relevante no mercado de farinha de trigo.",
+        "image": "https://mdiasbranco.com.br/wp-content/uploads/2019/05/m-dias-branco-logo_news-1.jpg"
     },
     {
-        "code": "ITUB3",
-        "name": "Itau Unibanco BBA",
+        "code": "NUBR33",
+        "name": "Nu Holding",
         "segment": "Banco",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banco_Ita%C3%BA_logo.svg/1200px-Banco_Ita%C3%BA_logo.svg.png"
+        "description": "Nu Holdings Ltd is engaged in providing digital banking services.",
+        "image": "https://nubank.com.br/images/nu-icon.png?v=2"
     }
 ]

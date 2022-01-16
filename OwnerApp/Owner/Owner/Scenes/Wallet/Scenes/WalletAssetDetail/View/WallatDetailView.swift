@@ -121,7 +121,7 @@ final class WallatDetailView: UIView {
     }()
     
     private lazy var addNewAssetAproachButton: OwnerPrimaryButtonProtocol = {
-        let button: OwnerPrimaryButtonProtocol = OwnerPrimaryButton(title: "APORTAR")
+        let button: OwnerPrimaryButtonProtocol = OwnerPrimaryButton(.rounded, title: "APORTAR")
         button.delegate = self
         return button
     }()

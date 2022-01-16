@@ -5,7 +5,6 @@
 //  Created by Paolo Prodossimo Lopes on 15/01/22.
 //
 
-import Foundation
 import UIKit
 
 struct ListOfMainAssets: Codable {

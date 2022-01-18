@@ -40,13 +40,13 @@ public class HomeViewController: UITableViewController {
     }
     
     private func configureBindings() {
-        viewModel.updateView = { [weak self] in
+        viewModel.updateView.bind { [weak self] _ in 
             self?.tableView.reloadData()
         }
     }
     
     private func configureHierarchy() {
-        navigationController?.navigationBar.topItem?.searchController = UIComponents.searchBar
+        navigationItem.searchController = UIComponents.searchBar
         tableView.backgroundView = UIComponents.activityIndicator
     }
     

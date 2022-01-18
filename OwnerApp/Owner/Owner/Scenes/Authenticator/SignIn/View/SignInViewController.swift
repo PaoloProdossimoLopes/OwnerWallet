@@ -9,6 +9,7 @@ import UIKit
 
 protocol SignInViewControllerNavigate: AnyObject {
     func navigateToHome()
+    func navigateToRegister()
 }
 
 final class SignInViewController: UIViewController {
@@ -76,6 +77,8 @@ final class SignInViewController: UIViewController {
     
     @objc private func registerLabelHandleTapped() {
         print("Tap")
+        navigate?.navigateToRegister()
+        
     }
     
 }

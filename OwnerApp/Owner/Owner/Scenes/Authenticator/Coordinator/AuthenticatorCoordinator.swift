@@ -10,6 +10,7 @@ import UIKit
 
 protocol AuthenticatorCoordinatorNavigate: AnyObject {
     func navigateToHome()
+    func goToRegister()
 }
 
 final class AuthenticatorCoordinator: Coordinator {
@@ -33,5 +34,10 @@ extension AuthenticatorCoordinator: SignInCoordinatorNavigate {
     func navigateToHome() {
         navigate?.navigateToHome()
     }
+    
+    func goToRegister() {
+        
+    }
+    
 }
 

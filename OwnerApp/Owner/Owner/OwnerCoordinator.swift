@@ -14,7 +14,7 @@ final class OwnerCoordinator: NSObject {
     
     var navigationController: UINavigationController
     
-    var userIsLogged: Bool = false
+    var userIsLogged: Bool = true
     
     init(with navigation: UINavigationController) {
         self.navigationController = navigation
@@ -52,6 +52,10 @@ final class OwnerCoordinator: NSObject {
 }
 
 extension OwnerCoordinator: AuthenticatorCoordinatorNavigate {
+    func goToRegister() {
+        
+    }
+    
     func navigateToHome() {
         configureHomeTab()
     }

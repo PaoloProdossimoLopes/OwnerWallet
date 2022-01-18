@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OwnerLIB
 
 final class HomeViewModel {
     
@@ -14,7 +15,8 @@ final class HomeViewModel {
     private(set) var assets: [ListOfMainAssets] = []
     private(set) var assetsFieltered: [ListOfMainAssets] = []
     
-    var updateView: (() -> Void)?
+//    var updateView: (() -> Void)?
+    private(set) var updateView = ObservableObject()
     
     func fetchAssets() {
         service.fetchAssets { [weak self] assets in
@@ -23,7 +25,7 @@ final class HomeViewModel {
             assets.forEach { self.assets.append($0) }
             
             self.assetsFieltered = self.assets
-            self.updateView?()
+            self.updateView.fire()
         }
     }
     
@@ -38,12 +40,12 @@ final class HomeViewModel {
         else if isEmptyAndTextNotIsEmpty { self.assetsFieltered = [] }
         else { self.assetsFieltered = self.assets }
         
-        updateView?()
+        updateView.fire()
     }
     
     func resetList() {
         self.assetsFieltered = self.assets
-        updateView?()
+        updateView.fire()
     }
     
     private func filterAsset(_ text: String) -> [ListOfMainAssets] {

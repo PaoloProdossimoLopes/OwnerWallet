@@ -11,13 +11,18 @@ import OwnerLIB
 public class HomeCoordinator: Coordinator {
 
     public var currentController: UIViewController
+    private var assets: [ListOfMainAssets] = []
+
 
     public override init(with navigation: UINavigationController) {
-        let vc = HomeController()
+        
+        let viewModel: HomeViewModel = .init()
+        let vc = HomeViewController(viewModel: viewModel)
         let nav = UINavigationController(rootViewController: vc)
         currentController = nav
+        
         super.init(with: navigation)
-
+        
         childCoordinators.append(self)
         configureTabBar()
     }

@@ -32,6 +32,16 @@ public final class OwnerLayoutObjectConstaints: NSObject {
         self.support.centerYAnchor.constraint(equalTo: reference, constant: distance).isActive = true
     }
     
+    public func greaterOrEqual(fixAt reference: NSLayoutYAxisAnchor, distance: CGFloat = 0) {
+        self.support.bottomAnchor.constraint(
+            greaterThanOrEqualTo: reference, constant: distance).isActive = true
+    }
+    
+    public func smallerOrEqual(fixAt reference: NSLayoutYAxisAnchor, distance: CGFloat = 0) {
+        self.support.bottomAnchor.constraint(
+            lessThanOrEqualTo: reference, constant: distance).isActive = true
+    }
+    
     public func height(_ size: CGFloat) {
         self.support.heightAnchor.constraint(equalToConstant: size).isActive = true
     }

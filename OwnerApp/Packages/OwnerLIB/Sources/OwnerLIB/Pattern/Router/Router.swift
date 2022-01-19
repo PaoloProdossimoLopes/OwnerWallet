@@ -8,6 +8,7 @@
 import UIKit
 
 public protocol Router: AnyObject {
+    var currentController: UIViewController { get }
     func present(_ viewController: UIViewController, animated: Bool)
     func present(_ viewController: UIViewController, animated: Bool, onDismissed: (()->Void)?)
     func dismiss(animated: Bool)

@@ -9,14 +9,21 @@ import UIKit
 
 public class ModalRouter: NSObject {
     
-    private let parentViewController: UIViewController
+    public let currentController: UIViewController
     private let navigationController = UINavigationController()
     private var onDismissForViewController: [UIViewController: (() -> Void)] = [:]
+    private var showCancelButton: Bool
     
-    public init(parentViewController: UIViewController) {
-        self.parentViewController = parentViewController
+    public init(
+        _ modalType: UIModalPresentationStyle = .pageSheet,
+        parentViewController: UIViewController,
+        showCancelButton: Bool = true
+    ) {
+        self.currentController = parentViewController
+        self.showCancelButton = showCancelButton
         super.init()
         navigationController.delegate = self
+        navigationController.modalPresentationStyle = modalType
     }
     
 }
@@ -37,14 +44,14 @@ extension ModalRouter: Router {
     public func dismiss(animated: Bool) {
         guard let first = navigationController.viewControllers.first else { return }
         performOnDismissed(for: first)
-        parentViewController.dismiss(animated: animated, completion: nil)
+        currentController.dismiss(animated: animated, completion: nil)
     }
     
     //MARK: - Private methods
     private func presentModally(_ viewController: UIViewController, animated: Bool) {
-        addCancelButton(to: viewController)
+        if showCancelButton { addCancelButton(to: viewController) }
         navigationController.setViewControllers([viewController], animated: false)
-        parentViewController.present(navigationController, animated: animated, completion: nil)
+        currentController.present(navigationController, animated: animated, completion: nil)
     }
     
     private func addCancelButton(to viewController: UIViewController) {

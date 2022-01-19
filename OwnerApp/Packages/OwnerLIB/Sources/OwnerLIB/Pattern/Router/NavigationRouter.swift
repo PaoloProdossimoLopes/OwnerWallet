@@ -9,12 +9,14 @@ import UIKit
 
 public class NavigationRouter: NSObject {
     
+    public var currentController: UIViewController
     private let navigationController: UINavigationController
     private let routerRootController: UIViewController?
     private var onDismissForViewController: [UIViewController: (() -> Void)] = [:]
     
     public init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.currentController = navigationController
         self.routerRootController = navigationController.viewControllers.first
         super.init()
         navigationController.delegate = self
@@ -24,7 +26,7 @@ public class NavigationRouter: NSObject {
 
 // MARK: - Router
 extension NavigationRouter: Router {
-    
+
     public func present(
         _ viewController: UIViewController, animated: Bool, onDismissed: (() -> Void)?
     ) {

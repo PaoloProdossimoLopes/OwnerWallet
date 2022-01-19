@@ -17,7 +17,7 @@ final class MyWalletViewController: UIViewController {
     //MARK: - Properties
     
     private let viewModel: WalltetViewModelProtocol
-    weak var navigateDelegate: MyWalletCoordinatorNavigate?
+//    weak var navigateDelegate: MyWalletCoordinatorNavigate?
     
     //MARK: - UI Components
     
@@ -136,7 +136,7 @@ final class MyWalletViewController: UIViewController {
 
 extension MyWalletViewController: MyWalletViewControllerNavigateDelegate {
     func navigateToAssetDetail(_ asset: AssetModel) {
-        self.navigateDelegate?.navigateToAssetDetail(asset)
+//        self.navigateDelegate?.navigateToAssetDetail(asset)
     }
 }
 

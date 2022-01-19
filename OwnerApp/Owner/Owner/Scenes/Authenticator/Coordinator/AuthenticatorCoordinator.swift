@@ -8,36 +8,18 @@
 import OwnerLIB
 import UIKit
 
-protocol AuthenticatorCoordinatorNavigate: AnyObject {
-    func navigateToHome()
-    func goToRegister()
-}
-
 final class AuthenticatorCoordinator: Coordinator {
     
-    let signInCoordinator: SignInCoordinator
-    var navigate: AuthenticatorCoordinatorNavigate?
+    var children: [Coordinator] = []
+    var router: Router
     
-    init(_ nav: UINavigationController) {
-        signInCoordinator = .init(nav)
-        super.init(with: nav)
+    init(router: Router) {
+        self.router = router
     }
     
-    override func start() {
-        signInCoordinator.navigate = self
-        signInCoordinator.start()
-    }
-    
-}
-
-extension AuthenticatorCoordinator: SignInCoordinatorNavigate {
-    func navigateToHome() {
-        navigate?.navigateToHome()
-    }
-    
-    func goToRegister() {
-        
+    func present(animated: Bool, onDismissed: (() -> Void)?) {
+        let coord = SignInCoordinator(router: router)
+        coord.present(animated: true, onDismissed: nil)
     }
     
 }
-

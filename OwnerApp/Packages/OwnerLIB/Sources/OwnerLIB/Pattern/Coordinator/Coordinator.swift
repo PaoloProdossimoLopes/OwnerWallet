@@ -6,13 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 public protocol Coordinator: AnyObject {
     
     var children: [Coordinator] { get set }
     var router: Router { get }
-    
-    func start()
     
     func present(animated: Bool, onDismissed: (() -> Void)?)
     func dismiss(animated: Bool)
@@ -24,22 +23,18 @@ public protocol Coordinator: AnyObject {
 
 //MARK: - Default implementation
 
-extension Coordinator {
+public extension Coordinator {
     
-    func start() { }
+    var children: [Coordinator] {
+        let child: [Coordinator] = []
+        return child
+    }
     
-    public func dismiss(animated: Bool) {
+    func dismiss(animated: Bool) {
         router.dismiss(animated: animated)
     }
     
-    private func removeChild(_ child: Coordinator) {
-        print("REMOVE: \(child)")
-        guard let index = children.firstIndex(where: { $0 === child })
-        else { return }
-        children.remove(at: index)
-    }
-    
-    public func presentChild(
+    func presentChild(
         _ child: Coordinator, animated: Bool, onDismissed: (() -> Void)? = nil
     ) {
         children.append(child)
@@ -48,6 +43,12 @@ extension Coordinator {
             self.removeChild(child)
             onDismissed?()
         })
+    }
+    
+    private func removeChild(_ child: Coordinator) {
+        guard let index = children.firstIndex(where: { $0 === child })
+        else { return }
+        children.remove(at: index)
     }
     
 }

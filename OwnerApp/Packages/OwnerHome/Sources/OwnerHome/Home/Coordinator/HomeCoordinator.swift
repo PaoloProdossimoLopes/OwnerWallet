@@ -9,33 +9,18 @@ import UIKit
 import OwnerLIB
 
 public class HomeCoordinator: Coordinator {
-
-    public var currentController: UIViewController
-    private var assets: [ListOfMainAssets] = []
-
-
-    public override init(with navigation: UINavigationController) {
-        
-        let viewModel: HomeViewModel = .init()
-        let vc = HomeViewController(viewModel: viewModel)
-        let nav = UINavigationController(rootViewController: vc)
-        currentController = nav
-        
-        super.init(with: navigation)
-        
-        childCoordinators.append(self)
-        configureTabBar()
+    
+    public var children: [Coordinator] = []
+    public var router: Router
+    
+    public init(router: Router) {
+        self.router = router
     }
     
-    private func configureTabBar() {
-        let homeImage = UIImage(systemName: "house.fill")
-        currentController.tabBarItem = UITabBarItem(
-            title: nil, image: homeImage,tag: 1
-        )
-    }
-
-    open override func start() {
-        navigationController.pushViewController(currentController, animated: true)
+    public func present(animated: Bool, onDismissed: (() -> Void)?) {
+        let viewModel = HomeViewModel()
+        let controller = HomeViewController(viewModel: viewModel)
+        router.present(controller, animated: true)
     }
 
 }

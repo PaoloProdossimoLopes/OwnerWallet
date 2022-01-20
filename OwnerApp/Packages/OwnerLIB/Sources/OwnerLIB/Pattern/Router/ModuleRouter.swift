@@ -19,14 +19,17 @@ open class ModuleRouter: Router {
         self.window = window
     }
     
-    public func dismiss(animated: Bool) { /*Don't do anything*/ }
+    public func dismiss(animated: Bool) {
+        
+    }
     
     public func present(
         _ viewController: UIViewController,
         animated: Bool,
         onDismissed: (() -> Void)?
     ) {
-        window?.rootViewController = viewController
+        currentController = viewController
+        window?.rootViewController = currentController
         window?.makeKeyAndVisible()
     }
     

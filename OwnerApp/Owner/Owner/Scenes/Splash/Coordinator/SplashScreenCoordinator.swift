@@ -25,23 +25,47 @@ final class SplashScreenCoordinator: Coordinator {
         router.present(controller, animated: true)
     }
     
-}
-
-extension SplashScreenCoordinator: SplashScreenViewControllerNavigate {
-    func advanceScreen(_ viewController: SplashScreenViewController) {
-        
+    private func routeTo(_ viewController: SplashScreenViewController) {
         let modalRouter = ModalRouter(
-            .fullScreen, parentViewController: viewController, showCancelButton: false
+            .fullScreen, parentViewController: viewController,
+            navigationBarIsHidden: true, showCancelButton: false
         )
         
         if logginIsSucceded {
-            let coord = HomeCoordinator(router: modalRouter)
-            coord.present(animated: true, onDismissed: nil)
+            routeToInitialPageLogged(router: modalRouter)
             return
         } else {
-            let coord = AuthenticatorCoordinator(router: modalRouter)
-            coord.present(animated: true, onDismissed: nil)
+            routeToAuthentication(router: modalRouter)
             return
         }
+    }
+    
+    func routeToInitialPageLogged(router atRouter: Router) {
+        let ownerTabViewController = OwnerTabViewController(tabs: configureListViewControllers())
+        atRouter.present(ownerTabViewController, animated: true)
+    }
+    
+    private func configureListViewControllers() -> [UIViewController] {
+        let homeCoordinator = HomeCoordinator(router: router)
+        let walletCoordinator = OwnerWalletCoordinator(router: router)
+        
+        var list = [UIViewController]()
+        list.append(homeCoordinator.currentController ?? UIViewController())
+        list.append(walletCoordinator.myWalletCoordinator.currentController ?? UIViewController())
+        
+        return list
+    }
+    
+    private func routeToAuthentication(router atRouter: Router) {
+        let coord = AuthenticatorCoordinator(router: atRouter)
+        coord.present(animated: true, onDismissed: nil)
+    }
+    
+}
+
+//MARK: - SplashScreenViewControllerNavigate
+extension SplashScreenCoordinator: SplashScreenViewControllerNavigate {
+    func advanceScreen(_ viewController: SplashScreenViewController) {
+        routeTo(viewController)
     }
 }

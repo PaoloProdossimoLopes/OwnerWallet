@@ -13,17 +13,21 @@ public class ModalRouter: NSObject {
     private let navigationController = UINavigationController()
     private var onDismissForViewController: [UIViewController: (() -> Void)] = [:]
     private var showCancelButton: Bool
+    private var navigationBarIsHidden: Bool
     
     public init(
         _ modalType: UIModalPresentationStyle = .pageSheet,
         parentViewController: UIViewController,
+        navigationBarIsHidden: Bool = false,
         showCancelButton: Bool = true
     ) {
         self.currentController = parentViewController
+        self.navigationBarIsHidden = navigationBarIsHidden
         self.showCancelButton = showCancelButton
         super.init()
         navigationController.delegate = self
         navigationController.modalPresentationStyle = modalType
+        navigationController.navigationBar.isHidden = navigationBarIsHidden
     }
     
 }
@@ -45,6 +49,12 @@ extension ModalRouter: Router {
         guard let first = navigationController.viewControllers.first else { return }
         performOnDismissed(for: first)
         currentController.dismiss(animated: animated, completion: nil)
+    }
+    
+    public func pop(animated: Bool) {
+        guard let first = navigationController.viewControllers.first else { return }
+        performOnDismissed(for: first)
+        first.navigationController?.popViewController(animated: animated)
     }
     
     //MARK: - Private methods

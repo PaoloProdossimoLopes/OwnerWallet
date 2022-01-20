@@ -8,7 +8,23 @@
 import UIKit
 import OwnerLIB
 
-struct AproachViewComponents {
+protocol AproachViewComponentsDelegate: AnyObject {
+    func closeButtonHandle()
+}
+
+class AproachViewComponents {
+    
+    var delegate: AproachViewComponentsDelegate?
+    
+    lazy var closeButton: UIButton = {
+        let image = UIImage(systemName: "xmark")?
+            .withTintColor(.ownerBlue, renderingMode: .alwaysOriginal)
+        let button = UIButton()
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(closeButtonHandle),
+                         for: .touchUpInside)
+        return button
+    }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -93,5 +109,11 @@ struct AproachViewComponents {
         button.layer.cornerRadius = 10
         return button
     }()
+    
+    //MARK: - Selectors
+    
+    @objc private func closeButtonHandle() {
+        delegate?.closeButtonHandle()
+    }
     
 }

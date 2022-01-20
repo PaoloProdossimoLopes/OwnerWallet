@@ -17,7 +17,7 @@ final class MyWalletViewController: UIViewController {
     //MARK: - Properties
     
     private let viewModel: WalltetViewModelProtocol
-//    weak var navigateDelegate: MyWalletCoordinatorNavigate?
+    private var navigateDelegate: MyWalletCoordinatorNavigate
     
     //MARK: - UI Components
     
@@ -66,7 +66,8 @@ final class MyWalletViewController: UIViewController {
     
     //MARK: - Constructor
     
-    init(viewModel: WalltetViewModelProtocol) {
+    init(_ delegate: MyWalletCoordinatorNavigate, viewModel: WalltetViewModelProtocol) {
+        self.navigateDelegate = delegate
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -81,6 +82,7 @@ final class MyWalletViewController: UIViewController {
         super.viewDidLoad()
         commonInit()
     }
+
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -126,6 +128,7 @@ final class MyWalletViewController: UIViewController {
         
         navigationItem.title = "CARTEIRA"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        
     }
     
     //MARK: - Selectors
@@ -136,7 +139,7 @@ final class MyWalletViewController: UIViewController {
 
 extension MyWalletViewController: MyWalletViewControllerNavigateDelegate {
     func navigateToAssetDetail(_ asset: AssetModel) {
-//        self.navigateDelegate?.navigateToAssetDetail(asset)
+        self.navigateDelegate.navigateToAssetDetail(asset)
     }
 }
 

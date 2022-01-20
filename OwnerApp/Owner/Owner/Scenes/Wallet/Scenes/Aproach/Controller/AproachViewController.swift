@@ -7,10 +7,17 @@
 
 import UIKit
 
+protocol AproachViewControllerNavigate: AnyObject {
+    func aprachButtonWasTapped()
+    func closeButtonWasTapped()
+}
+
 final class AproachViewController: UIViewController {
     
     private var customView: AproachView?
     private let viewModel: AproachViewModel
+    
+    var navigate: AproachViewControllerNavigate?
     
     init(viewModel: AproachViewModel) {
         self.viewModel = viewModel
@@ -29,6 +36,17 @@ final class AproachViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        customView?.delegate = self
     }
     
+}
+
+extension AproachViewController: AproachViewDelegate {
+    func aprachButtonWasTapped() {
+        navigate?.aprachButtonWasTapped()
+    }
+    
+    func closeButtonWasTapped() {
+        navigate?.closeButtonWasTapped()
+    }
 }

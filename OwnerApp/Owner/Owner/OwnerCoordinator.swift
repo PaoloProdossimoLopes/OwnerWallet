@@ -21,11 +21,8 @@ final class OwnerCoordinator: Coordinator {
     }
 
     func present(animated: Bool, onDismissed: (() -> Void)?) {
-        
         let coord = SplashScreenCoordinator(router: router)
         coord.present(animated: true, onDismissed: nil)
-        
     }
- 
     
 }

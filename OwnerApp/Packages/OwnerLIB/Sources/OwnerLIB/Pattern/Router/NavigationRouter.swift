@@ -14,12 +14,13 @@ public class NavigationRouter: NSObject {
     private let routerRootController: UIViewController?
     private var onDismissForViewController: [UIViewController: (() -> Void)] = [:]
     
-    public init(navigationController: UINavigationController) {
+    public init(navigationController: UINavigationController, navIsHidden: Bool = true) {
         self.navigationController = navigationController
         self.currentController = navigationController
         self.routerRootController = navigationController.viewControllers.first
         super.init()
         navigationController.delegate = self
+        navigationController.navigationBar.isHidden = navIsHidden
     }
     
 }

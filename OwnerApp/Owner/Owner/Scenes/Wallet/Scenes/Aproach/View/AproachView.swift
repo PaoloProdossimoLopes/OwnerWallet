@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol AproachViewDelegate: AnyObject {
+    func aprachButtonWasTapped()
+    func closeButtonWasTapped()
+}
+
 final class AproachView: UIView {
     
     //MARK: - Properties
@@ -14,12 +19,15 @@ final class AproachView: UIView {
     private var components: AproachViewComponents
     private let controller: AproachViewController
     
+    var delegate: AproachViewDelegate?
+    
     //MARK: - Constructor
     
     init(_ controller: AproachViewController) {
         self.controller = controller
         self.components = .init()
         super.init(frame: .zero)
+        components.delegate = self
         commonInit()
     }
     
@@ -41,6 +49,7 @@ final class AproachView: UIView {
          components.assetQuantityTF, UIView()]
             .forEach { components.mainTextViewStackView.addArrangedSubview($0) }
         
+        addSubview(components.closeButton)
         addSubview(components.titleLabel)
         addSubview(components.mainTextViewStackView)
         addSubview(components.aproachButton)
@@ -51,6 +60,13 @@ final class AproachView: UIView {
             $0.top(at: self.safeAreaLayoutGuide.topAnchor, distance: 30)
             $0.leading(at: self.leadingAnchor, distance: 20)
             $0.trailing(at: self.trailingAnchor, distance: -20)
+        }
+        
+        components.closeButton.ownerLayout.applyConstraints {
+            $0.centerY(at: components.titleLabel.centerYAnchor)
+            $0.leading(at: self.leadingAnchor, distance: 20)
+            $0.height(36)
+            $0.width(36)
         }
         
         components.mainTextViewStackView.ownerLayout.applyConstraints {
@@ -86,7 +102,15 @@ final class AproachView: UIView {
     }
     
     @objc private func aproachButtonActionHandleTapped() {
-        print("Tap")
+        delegate?.aprachButtonWasTapped()
+    }
+    
+}
+
+extension AproachView: AproachViewComponentsDelegate {
+    
+    func closeButtonHandle() {
+        delegate?.closeButtonWasTapped()
     }
     
 }

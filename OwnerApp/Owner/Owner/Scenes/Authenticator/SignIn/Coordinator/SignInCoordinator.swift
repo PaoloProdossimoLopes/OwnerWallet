@@ -8,49 +8,19 @@
 import OwnerLIB
 import UIKit
 
-protocol SignInCoordinatorNavigate: AnyObject {
-    func navigateToHome()
-    func goToRegister() 
-}
-
 final class SignInCoordinator: Coordinator {
     
-    var navigate: SignInCoordinatorNavigate?
+    var children: [Coordinator] = []
+    var router: Router
     
-    var currentViewController: UIViewController?
-    
-    init(_ navigation: UINavigationController) {
-        super.init(with: navigation)
+    init(router: Router) {
+        self.router = router
     }
     
-    override func start() {
-        goToSignViewController()
-    }
-    
-    func goToSignViewController() {
+    func present(animated: Bool, onDismissed: (() -> Void)?) {
         let viewModel = SignInViewModel()
         let controller = SignInViewController(viewModel: viewModel)
-        controller.navigate = self
-        
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
-        
-        currentViewController = nav
-        navigationController.show(nav, navigate: .present)
+        router.present(controller, animated: true)
     }
-    
-}
 
-extension SignInCoordinator: SignInViewControllerNavigate {
-    func navigateToRegister() {
-        let view = UIViewController()
-        view.view.backgroundColor = .red
-        navigationController.present(view, animated: true, completion: nil)
-    }
-    
-    func navigateToHome() {
-        navigationController.close(.dissmis) { [weak self] in
-            self?.navigate?.navigateToHome()
-        }
-    }
 }

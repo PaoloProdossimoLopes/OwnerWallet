@@ -10,53 +10,19 @@ import UIKit
 import OwnerLIB
 import OwnerHome
 
-final class OwnerCoordinator: NSObject {
+final class OwnerCoordinator: Coordinator {
     
-    var navigationController: UINavigationController
+    private(set) var router: Router
+    var children: [Coordinator] = []
     
-    var userIsLogged: Bool = true
-    
-    init(with navigation: UINavigationController) {
-        self.navigationController = navigation
+    init(router: Router) {
+        self.router = router
+        present(animated: true, onDismissed: nil)
     }
-    
-    func start() {
-        self.navigationController.navigationBar.isHidden = true
-        if userIsLogged { configureHomeTab() }
-        else { goToAuthentication() }
-    }
-    
-    func configureHomeTab() {
-        let ownerTabViewController = OwnerTabViewController(tabs: configureListViewControllers())
-        ownerTabViewController.modalPresentationStyle = .fullScreen
-        navigationController.show(ownerTabViewController, navigate: .present)
-    }
-    
-    private func configureListViewControllers() -> [UIViewController] {
-        let homeCoordinator = HomeCoordinator(with: navigationController)
-        let walletCoordinator = OwnerWalletCoordinator(with: navigationController)
-        
-        var list = [UIViewController]()
-        list.append(homeCoordinator.currentController)
-        list.append(walletCoordinator.currentController)
-        
-        return list
-    }
-    
-    private func goToAuthentication() {
-        let authCoordinator = AuthenticatorCoordinator(navigationController)
-        authCoordinator.navigate = self
-        authCoordinator.start()
-    }
-    
-}
 
-extension OwnerCoordinator: AuthenticatorCoordinatorNavigate {
-    func goToRegister() {
-        
+    func present(animated: Bool, onDismissed: (() -> Void)?) {
+        let coord = SplashScreenCoordinator(router: router)
+        coord.present(animated: true, onDismissed: nil)
     }
     
-    func navigateToHome() {
-        configureHomeTab()
-    }
 }

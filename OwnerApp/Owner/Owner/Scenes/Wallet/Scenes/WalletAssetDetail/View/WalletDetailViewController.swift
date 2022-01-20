@@ -17,7 +17,7 @@ final class WalletDetailViewController: UIViewController {
     //MARK: - Properties
     
     private let viewModel: WallatDetailViewModelProtocol
-    weak var navigate: WalletDetailViewControllerNavigate?
+    var navigate: WalletDetailViewControllerNavigate?
     
     private lazy var detailView: WallatDetailView = {
         let view = WallatDetailView(viewModel: self.viewModel)
@@ -27,7 +27,8 @@ final class WalletDetailViewController: UIViewController {
     
     //MARK: - Contructos
     
-    init(viewModel: WallatDetailViewModelProtocol) {
+    init(_ delegate: WalletDetailViewControllerNavigate, viewModel: WallatDetailViewModelProtocol) {
+        self.navigate = delegate
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -45,7 +46,6 @@ final class WalletDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
 }

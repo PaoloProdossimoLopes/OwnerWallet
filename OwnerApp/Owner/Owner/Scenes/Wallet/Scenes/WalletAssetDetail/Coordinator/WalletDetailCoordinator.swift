@@ -8,65 +8,62 @@
 import OwnerLIB
 import UIKit
 
-protocol WalletDetailCoordinatorNavigate: AnyObject {
-    func navigateToBack()
-}
-
 final class WalletDetailCoordinator: Coordinator {
     
-    //MARK: - Properties
+    var children: [Coordinator] = []
+    var router: Router
     
+    private var currentController: UIViewController = .init()
     private let asset: AssetModel
     private var listOfAproached: [WalletAssetAproachDetailModel] = []
     
-    private var aproachCoordinator: AproachCoordinator?
     private let service: WalletAssetDetailAPI = .shared
     
-    weak var navigate: WalletDetailCoordinatorNavigate?
-    
-    //MARK: - Constructor
-    
-    init(_ nav: UINavigationController, asset: AssetModel) {
+    init(router: Router, asset: AssetModel) {
         self.asset = asset
-        super.init(with: nav)
-        aproachCoordinator = .init(nav)
+        self.router = router
     }
     
-    //MARK: - Starter
-    
-    override func start() {
-        callAPIs()
+    func present(animated: Bool, onDismissed: (() -> Void)?) {
+        callAPI() {
+            self.routeToDetail()
+        }
     }
     
-    private func callAPIs() {
+    private func callAPI(_ completion: () -> Void) {
         service.fetchListOfAproacheds { [weak self] reponseList in
             reponseList.forEach { response in
                 let model = WalletAssetAproachDetailModel(response: response)
                 self?.listOfAproached.append(model)
             }
             
-            showWalletDetailView()
+            completion()
         }
     }
     
-    private func showWalletDetailView() {
+    private func routeToDetail() {
         let viewModel = WallatDetailViewModel(
-            asset: self.asset,
-            listOfAssetsAproacheds: listOfAproached
+            asset: asset, listOfAssetsAproacheds: listOfAproached
         )
-        let controller = WalletDetailViewController(viewModel: viewModel)
-        controller.navigate = self
-        navigationController.show(controller, navigate: .push)
+        let controller = WalletDetailViewController(self, viewModel: viewModel)
+        
+        currentController = controller
+        router.present(controller, animated: true)
+    }
+    
+    func routeToAprach() {
+        let aproachCoordinator = AproachCoordinator(router: router)
+        presentChild(aproachCoordinator, animated: true, onDismissed: nil)
     }
     
 }
 
 extension WalletDetailCoordinator: WalletDetailViewControllerNavigate {
     func navigateToAproach() {
-        aproachCoordinator?.start()
+        routeToAprach()
     }
     
     func navigateToBack() {
-        navigate?.navigateToBack()
+        dismiss(animated: true)
     }
 }

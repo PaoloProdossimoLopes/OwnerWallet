@@ -32,7 +32,7 @@ final class WallatDetailView: UIView {
 //    }()
     
     private lazy var backButton: UIButton = {
-        let image = UIImage(systemName: "arrow.left")?.withTintColor(.ownerBlue, renderingMode: .alwaysOriginal)
+        let image = UIImage(systemName: "xmark")?.withTintColor(.ownerBlue, renderingMode: .alwaysOriginal)
         let button = UIButton()
         button.setImage(image, for: .normal)
         button.setButtonImageSize(24)

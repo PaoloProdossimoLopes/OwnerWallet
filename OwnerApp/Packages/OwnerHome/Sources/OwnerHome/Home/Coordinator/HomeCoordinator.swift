@@ -9,33 +9,40 @@ import UIKit
 import OwnerLIB
 
 public class HomeCoordinator: Coordinator {
-
-    public var currentController: UIViewController
-    private var assets: [ListOfMainAssets] = []
-
-
-    public override init(with navigation: UINavigationController) {
-        
-        let viewModel: HomeViewModel = .init()
-        let vc = HomeViewController(viewModel: viewModel)
-        let nav = UINavigationController(rootViewController: vc)
-        currentController = nav
-        
-        super.init(with: navigation)
-        
-        childCoordinators.append(self)
-        configureTabBar()
+    
+    public var currentController: UIViewController?
+    public var children: [Coordinator] = []
+    public var router: Router
+    private var controller: HomeViewController?
+    
+    public init(router: Router) {
+        self.router = router
+        configurate()
     }
     
-    private func configureTabBar() {
-        let homeImage = UIImage(systemName: "house.fill")
-        currentController.tabBarItem = UITabBarItem(
-            title: nil, image: homeImage,tag: 1
-        )
+    public func present(animated: Bool, onDismissed: (() -> Void)?) {
+        if let vc = currentController {
+            router.present(vc, animated: true)
+        }
     }
-
-    open override func start() {
-        navigationController.pushViewController(currentController, animated: true)
+    
+    private func configurate() {
+        self.currentController = setupController()
+        self.controller?.tabBarItem = setupTabBarIcon()
+    }
+    
+    private func setupTabBarIcon() -> UITabBarItem {
+        let homeImage = UIImage(systemName: "house.fill")
+        return UITabBarItem(title: nil, image: homeImage,tag: 1)
+    }
+    
+    private func setupController() -> UINavigationController {
+        let viewModel = HomeViewModel()
+        self.controller = HomeViewController(viewModel: viewModel)
+        if let UController = controller {
+            return UINavigationController(rootViewController: UController)
+        }
+        return UINavigationController()
     }
 
 }

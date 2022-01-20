@@ -14,19 +14,26 @@ protocol MyWalletCoordinatorNavigate: AnyObject {
 
 final class MyWalletCoordinator: Coordinator {
     
-    weak var navigateDelegate: OwnerWalletCoordinatorNavigate?
+    public var currentController: UINavigationController?
+    public var children: [Coordinator] = []
+    public var router: Router
+    private var controller: MyWalletViewController?
     
-    var currentViewController: UINavigationController = .init()
+    let dispachGroup: DispatchGroup = .init()
+    private let service: MyWalletAPI = .shared
     private var assets: [AssetModel] = []
     
-    private let service: MyWalletAPI = .shared
-    
-    init(navigation: UINavigationController) {
-        super.init(with: navigation)
+    init(router: Router) {
+        self.router = router
+        callAPI()
     }
     
-    override func start() {
+    func present(animated: Bool, onDismissed: (() -> Void)?) {
         callAPI()
+
+        dispachGroup.notify(queue: .main) {
+            self.routeTo(animated, onDismissed: onDismissed)
+        }
     }
     
     private func callAPI() {
@@ -36,24 +43,48 @@ final class MyWalletCoordinator: Coordinator {
                 self?.assets.append(model)
             }
             
-            showWalletView()
+            self?.configurate()
         }
     }
     
-    private func showWalletView() {
+    private func routeTo(_ animated: Bool, onDismissed: (() -> Void)?) {
+        if let vc = currentController {
+            router.present(vc, animated: true)
+        }
+    }
+    
+    private func configurate() {
+        self.currentController = setupController()
+        self.controller?.tabBarItem = setupTabBarIcon()
+    }
+    
+    private func setupTabBarIcon() -> UITabBarItem {
+        let homeImage = UIImage(systemName: "wallet.pass.fill")
+        return UITabBarItem(title: nil, image: homeImage,tag: 1)
+    }
+    
+    private func setupController() -> UINavigationController {
         let viewModel = WalltetViewModel(assets: assets)
-        let viewController = MyWalletViewController(viewModel: viewModel)
+        let con = MyWalletViewController(self, viewModel: viewModel)
+        self.controller = con
+        if let UController = controller {
+            return UINavigationController(rootViewController: UController)
+        }
+        return UINavigationController()
+    }
+    
+    private func routeToAssetDetail(_ asset: AssetModel) {
+        let current = currentController ?? UINavigationController()
+        let modalRouter = ModalRouter(.custom, parentViewController: current, navigationBarIsHidden: true, showCancelButton: false)
+        let coord = WalletDetailCoordinator(router: modalRouter, asset: asset)
+        coord.present(animated: true, onDismissed: nil)
         
-        viewController.navigateDelegate = self
-        
-        let navigation = UINavigationController(rootViewController: viewController)
-        self.currentViewController = navigation
     }
     
 }
 
 extension MyWalletCoordinator: MyWalletCoordinatorNavigate {
     func navigateToAssetDetail(_ asset: AssetModel) {
-        navigateDelegate?.navigateToDetail(asset)
+        routeToAssetDetail(asset)
     }
 }
